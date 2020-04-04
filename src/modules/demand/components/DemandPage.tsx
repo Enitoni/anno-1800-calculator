@@ -28,6 +28,7 @@ const SaveLoadSection = styled(Section)`
 
 const SelectedCalculation = styled.div`
   margin-left: 64px;
+  flex: 1;
 `
 
 export function DemandPage() {
