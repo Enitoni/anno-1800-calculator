@@ -12,12 +12,13 @@ export type CalculationPopulationProps = {
 }
 
 const Container = styled.div`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-gap: 32px;
 `
 
 const Controller = styled.div`
-  width: 150px;
+  width: auto;
 `
 
 const ControllerLabel = styled.span`
