@@ -1,4 +1,7 @@
+export type ResourceType = "basic" | "luxury" | "raw" | "material"
+
 export type Resource = {
-  type: "basic" | "luxury"
+  type: ResourceType
   name: string
+  costs?: Resource[]
 }
