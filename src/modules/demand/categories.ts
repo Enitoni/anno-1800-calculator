@@ -1,6 +1,6 @@
-import { ResidentCategory } from "./types/ResidentCategory"
+import { Residence } from "./types/Residence"
 
-export const farmer: ResidentCategory = {
+export const farmer: Residence = {
   name: "Farmer",
   needs: [
     {

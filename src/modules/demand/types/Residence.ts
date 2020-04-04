@@ -1,11 +1,11 @@
 import { ResourceName } from "./ResourceName"
 
-export type ResidentNeedEntry = {
+export type ResidenceNeed = {
   resource: ResourceName
   amount: number
 }
 
-export type ResidentCategory = {
+export type Residence = {
   name: string
-  needs: ResidentNeedEntry[]
+  needs: ResidenceNeed[]
 }
