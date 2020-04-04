@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react"
 import styled from "../../theming/custom"
 import React from "react"
-import { getFontColor } from "../../theming/helpers"
+import { getFontColor, getTransparency } from "../../theming/helpers"
 
 export type SectionProps = PropsWithChildren<{
   className?: string
@@ -16,6 +16,17 @@ const Label = styled.span`
   text-transform: uppercase;
 
   color: ${getFontColor("muted")};
+  display: flex;
+  align-items: center;
+
+  &:after {
+    flex-grow: 1;
+    content: "";
+    display: block;
+    height: 2px;
+    background: ${getTransparency("lightPositive")};
+    margin-left: 16px;
+  }
 `
 
 const Content = styled.div`
