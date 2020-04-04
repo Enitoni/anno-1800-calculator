@@ -3,13 +3,17 @@ import { ResidenceName } from "../types/ResidenceName"
 import { ResourceName } from "../types/ResourceName"
 
 import * as residences from "../residences"
-import * as resources from "../resources"
 
 export class DemandCalculation {
   @observable public name = "Unnamed Island"
   @observable public population: Record<ResidenceName, number> = {
-    farmer: 2460, // set this to 0 when there's ui for it,
-    worker: 2000,
+    farmer: 0, // set this to 0 when there's ui for it,
+    worker: 0,
+    artisan: 0,
+    engineer: 0,
+    investor: 0,
+    journalero: 0,
+    obrero: 0,
   }
 
   @computed
