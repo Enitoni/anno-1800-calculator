@@ -7,7 +7,7 @@ import { PrimaryButton } from "../../../common/button/components/PrimaryButton"
 import { useStores } from "../../../common/state/hooks/useStores"
 import { useObserver } from "mobx-react-lite"
 import { CalculationItem } from "./CalculationItem"
-import { CalculationView } from "./CalculationView"
+import { CalculationView } from "./CalculationView/CalculationView"
 
 const Container = styled.div`
   display: flex;
