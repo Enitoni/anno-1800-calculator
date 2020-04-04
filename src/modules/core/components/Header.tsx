@@ -29,7 +29,7 @@ const Content = styled.div`
 `
 
 const Title = styled.h1`
-  font-size: 18px;
+  font-size: 1.1em;
   font-weight: 700;
 `
 

@@ -15,7 +15,7 @@ export type HeaderLinkProps = {
 }
 
 const Label = styled.span`
-  font-size: 14px;
+  font-size: 0.9em;
   font-weight: 800;
   text-transform: uppercase;
 

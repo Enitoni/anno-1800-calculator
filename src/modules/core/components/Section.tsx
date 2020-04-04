@@ -11,7 +11,7 @@ export type SectionProps = PropsWithChildren<{
 const Container = styled.aside``
 
 const Label = styled.span`
-  font-size: 14px;
+  font-size: 0.8em;
   font-weight: 800;
   text-transform: uppercase;
 

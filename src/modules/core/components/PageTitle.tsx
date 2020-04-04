@@ -18,7 +18,7 @@ const Container = styled.div`
 `
 
 const Title = styled.h2`
-  font-size: 18px;
+  font-size: 1.1em;
   font-weight: 800;
   text-transform: uppercase;
 
