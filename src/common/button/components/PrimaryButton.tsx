@@ -22,7 +22,7 @@ export const PrimaryButton = styled(Button)`
 
   > .label {
     font-weight: 700;
-    font-size: 0.7em;
+    font-size: 0.8em;
     text-transform: uppercase;
   }
 
