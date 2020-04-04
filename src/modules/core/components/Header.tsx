@@ -18,7 +18,7 @@ const Container = styled.header`
 `
 
 const Title = styled.h1`
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 700;
 `
 

@@ -2,6 +2,14 @@ import { createGlobalStyle } from "../custom"
 import { getFontColor, getColor } from "../helpers"
 
 export const GlobalStyles = createGlobalStyle`
+@import url('https://rsms.me/inter/inter.css');
+
+html { font-family: 'Inter', sans-serif; }
+
+@supports (font-variation-settings: normal) {
+  html { font-family: 'Inter var', sans-serif; }
+}
+
 h1,
 h2,
 h3,
@@ -21,8 +29,6 @@ html,
 body {
   margin: 0;
   padding: 0;
-
-  font-family: Heebo, sans-serif;
 
   color: ${getFontColor("normal")};
 
