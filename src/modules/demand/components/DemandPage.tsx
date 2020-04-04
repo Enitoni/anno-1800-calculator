@@ -16,6 +16,11 @@ const Sidebar = styled.div`
   width: ${SIDEBAR_WIDTH}px;
 `
 
+const CalculationList = styled.div`
+  margin-top: -8px;
+  margin-bottom: 8px;
+`
+
 const SaveLoadSection = styled(Section)`
   margin-top: 32px;
 `
@@ -29,9 +34,11 @@ export function DemandPage() {
       <Container>
         <Sidebar>
           <Section label="Your islands">
-            {demandStore.calculations.map((c, i) => (
-              <CalculationItem key={c.name + i} calculation={c} />
-            ))}
+            <CalculationList>
+              {demandStore.calculations.map((c, i) => (
+                <CalculationItem key={c.name + i} calculation={c} />
+              ))}
+            </CalculationList>
             <PrimaryButton
               stretch
               onClick={() => demandStore.add()}

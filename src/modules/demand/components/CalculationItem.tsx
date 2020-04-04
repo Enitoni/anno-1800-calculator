@@ -1,21 +1,47 @@
 import { DemandCalculation } from "../classes/DemandCalculation"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { useObserver } from "mobx-react-lite"
 import React from "react"
-import { getFontColor } from "../../theming/helpers"
+import { getFontColor, getColor } from "../../theming/helpers"
+import { useStores } from "../../../common/state/hooks/useStores"
 
 export type CalculationItemProps = {
   calculation: DemandCalculation
 }
 
-const Container = styled.div`
+const Container = styled.div<{ active: boolean }>`
   color: ${getFontColor("muted")};
+  padding: 8px 0px;
 
-  margin-bottom: 16px;
+  transition: 200ms ease color;
+
+  ${(props) => {
+    if (!props.active) {
+      return css`
+        &:hover {
+          cursor: pointer;
+          color: ${getFontColor("normal")};
+        }
+      `
+    }
+
+    return css`
+      pointer-events: none;
+      color: ${getColor("accent")};
+    `
+  }}
 `
 
 export function CalculationItem(props: CalculationItemProps) {
+  const { demandStore } = useStores()
   const { calculation } = props
 
-  return useObserver(() => <Container>{calculation.name}</Container>)
+  return useObserver(() => (
+    <Container
+      active={demandStore.selected === calculation}
+      onClick={() => (demandStore.selected = calculation)}
+    >
+      {calculation.name}
+    </Container>
+  ))
 }
