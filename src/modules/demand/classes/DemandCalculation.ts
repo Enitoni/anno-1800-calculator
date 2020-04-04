@@ -1,3 +1,5 @@
+import { observable } from "mobx"
+
 export class DemandCalculation {
-  constructor(public name: string) {}
+  @observable public name = "Unnamed Island"
 }
