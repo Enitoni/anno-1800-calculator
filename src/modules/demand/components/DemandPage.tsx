@@ -7,6 +7,7 @@ import { PrimaryButton } from "../../../common/button/components/PrimaryButton"
 import { useStores } from "../../../common/state/hooks/useStores"
 import { useObserver } from "mobx-react-lite"
 import { CalculationItem } from "./CalculationItem"
+import { CalculationView } from "./CalculationView"
 
 const Container = styled.div`
   display: flex;
@@ -25,8 +26,19 @@ const SaveLoadSection = styled(Section)`
   margin-top: 32px;
 `
 
+const SelectedCalculation = styled.div`
+  margin-left: 64px;
+`
+
 export function DemandPage() {
   const { demandStore } = useStores()
+
+  const renderSelected = () => {
+    const { selected } = demandStore
+    if (!selected) return
+
+    return <CalculationView calculation={selected} />
+  }
 
   return useObserver(() => (
     <>
@@ -48,6 +60,7 @@ export function DemandPage() {
           </Section>
           <SaveLoadSection label="Save / Load">Nothing here yet...</SaveLoadSection>
         </Sidebar>
+        <SelectedCalculation>{renderSelected()}</SelectedCalculation>
       </Container>
     </>
   ))
