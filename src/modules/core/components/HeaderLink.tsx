@@ -6,6 +6,7 @@ import { SVGIcon } from "../../../common/icons/components/SVGIcon"
 import { size } from "polished"
 import { getFontColor, getColor } from "../../theming/helpers"
 import { css } from "styled-components"
+import { HEADER_HEIGHT } from "../constants"
 
 export type HeaderLinkProps = {
   to: string
@@ -31,6 +32,8 @@ const Icon = styled(SVGIcon)`
 `
 
 const Container = styled.a<{ active: boolean }>`
+  height: ${HEADER_HEIGHT}px;
+
   display: flex;
   align-items: center;
 
