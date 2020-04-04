@@ -45,7 +45,7 @@ export function Header() {
         <Title>Anno calculator</Title>
         <Nav>
           <HeaderLink icon="home" to="/" label="Home" />
-          <HeaderLink icon="box" to="/resident-demands" label="Demands" />
+          <HeaderLink icon="box" to="/demands" label="Demands" />
         </Nav>
       </Content>
     </Container>
