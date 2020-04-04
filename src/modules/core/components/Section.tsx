@@ -14,9 +14,12 @@ const Label = styled.span`
   font-size: 14px;
   font-weight: 800;
   text-transform: uppercase;
-  margin-bottom: 16px;
 
   color: ${getFontColor("muted")};
+`
+
+const Content = styled.div`
+  margin-top: 16px;
 `
 
 export function Section(props: SectionProps) {
@@ -25,7 +28,7 @@ export function Section(props: SectionProps) {
   return (
     <Container className={className}>
       <Label>{label}</Label>
-      {children}
+      <Content>{children}</Content>
     </Container>
   )
 }
