@@ -10,4 +10,7 @@ export const darkTheme: Theme = {
     normal: "#e0e0e0",
     muted: "rgba(255, 255, 255, 0.5)",
   },
+  transparencies: {
+    lightPositive: "rgba(255, 255, 255, 0.3)",
+  },
 }

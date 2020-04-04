@@ -8,4 +8,7 @@ export type Theme = {
     normal: string
     muted: string
   }
+  transparencies: {
+    lightPositive: string
+  }
 }
