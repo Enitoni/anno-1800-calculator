@@ -15,6 +15,7 @@ const Container = styled.div`
 
 const Sidebar = styled.div`
   width: ${SIDEBAR_WIDTH}px;
+  flex-shrink: 0;
 `
 
 const CalculationList = styled.div`
