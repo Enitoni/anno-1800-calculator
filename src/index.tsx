@@ -9,6 +9,8 @@ async function main() {
   const manager = createManager()
   const element = document.querySelector(".app")
 
+  await manager.init()
+
   ReactDOM.render(
     <ManagerContext.Provider value={manager}>{<App />}</ManagerContext.Provider>,
     element,

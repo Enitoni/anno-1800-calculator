@@ -6,5 +6,6 @@ export type Theme = {
   }
   fontColors: {
     normal: string
+    muted: string
   }
 }
