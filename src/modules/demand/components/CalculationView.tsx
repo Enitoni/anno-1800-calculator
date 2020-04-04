@@ -17,6 +17,7 @@ export function CalculationView(props: CalculationViewProps) {
       <FormField label="Name">
         <TextInput {...bindTextToObservable(calculation, "name")} />
       </FormField>
+      <pre>{JSON.stringify(calculation.demand, null, " ")}</pre>
     </>
   ))
 }
