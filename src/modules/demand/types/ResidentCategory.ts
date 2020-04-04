@@ -1,7 +1,7 @@
-import { Resource } from "./Resource"
+import { ResourceName } from "./ResourceName"
 
 export type ResidentNeedEntry = {
-  resource: Resource
+  resource: ResourceName
   amount: number
 }
 
