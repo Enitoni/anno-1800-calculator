@@ -1,6 +1,6 @@
 import { Residence } from "./types/Residence"
 
-export const farmer: Residence = {
+export const farmers: Residence = {
   name: "Farmers",
   needs: [
     {
@@ -18,7 +18,7 @@ export const farmer: Residence = {
   ],
 }
 
-export const worker: Residence = {
+export const workers: Residence = {
   name: "Workers",
   needs: [
     {
@@ -48,7 +48,7 @@ export const worker: Residence = {
   ],
 }
 
-export const artisan: Residence = {
+export const artisans: Residence = {
   name: "Artisans",
   needs: [
     {
@@ -86,7 +86,7 @@ export const artisan: Residence = {
   ],
 }
 
-export const engineer: Residence = {
+export const engineers: Residence = {
   name: "Engineers",
   needs: [
     {
@@ -128,7 +128,7 @@ export const engineer: Residence = {
   ],
 }
 
-export const investor: Residence = {
+export const investors: Residence = {
   name: "Investors",
   needs: [
     {
@@ -178,7 +178,7 @@ export const investor: Residence = {
   ],
 }
 
-export const jornalero: Residence = {
+export const jornaleros: Residence = {
   name: "Jornaleros",
   needs: [
     {
@@ -196,7 +196,7 @@ export const jornalero: Residence = {
   ],
 }
 
-export const obrero: Residence = {
+export const obreros: Residence = {
   name: "Obreros",
   needs: [
     {

@@ -13,13 +13,13 @@ export type SerializedCalculation = {
 export const defaultCalculation: SerializedCalculation = {
   name: "Unnamed Island",
   population: {
-    farmer: 0,
-    worker: 0,
-    artisan: 0,
-    engineer: 0,
-    investor: 0,
-    jornalero: 0,
-    obrero: 0,
+    farmers: 0,
+    workers: 0,
+    artisans: 0,
+    engineers: 0,
+    investors: 0,
+    jornaleros: 0,
+    obreros: 0,
   },
 }
 
