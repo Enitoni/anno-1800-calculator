@@ -3,6 +3,7 @@ import { ResidenceName } from "../types/ResidenceName"
 import { ResourceName } from "../types/ResourceName"
 
 import * as residences from "../residences"
+import * as resources from "../resources"
 
 export type SerializedCalculation = {
   name: string
@@ -50,7 +51,10 @@ export class DemandCalculation {
         .forEach(([resource, amount]) => add(resource, amount))
     }
 
-    return result
+    return Object.entries(result).map(([key, consumption]) => ({
+      ...resources[key as ResourceName],
+      consumption: consumption!,
+    }))
   }
 
   public get serialized(): SerializedCalculation {

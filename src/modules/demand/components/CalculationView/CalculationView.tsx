@@ -7,6 +7,7 @@ import { FormField } from "../../../../common/form/components/FormField"
 import { Population } from "./Population"
 import styled from "../../../theming/custom"
 import { Section } from "../../../core/components/Section"
+import { DemandTable } from "./DemandTable"
 
 export type CalculationViewProps = {
   calculation: DemandCalculation
@@ -36,8 +37,8 @@ export function CalculationView(props: CalculationViewProps) {
       <PopulationSection label="Population">
         <Population calculation={calculation} />
       </PopulationSection>
-      <ResultSection label="Result (Temporarily JSON)">
-        <pre>{JSON.stringify(calculation.demand, null, " ")}</pre>
+      <ResultSection label="Result">
+        <DemandTable calculation={calculation} />
       </ResultSection>
     </Container>
   ))

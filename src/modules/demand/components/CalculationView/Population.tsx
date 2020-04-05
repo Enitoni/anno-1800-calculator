@@ -13,7 +13,7 @@ export type CalculationPopulationProps = {
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
   grid-gap: 32px;
 `
 
@@ -37,7 +37,11 @@ export function Population(props: CalculationPopulationProps) {
     return (
       <Controller>
         <ControllerLabel>{residence.name}</ControllerLabel>
-        <NumberInput value={population[name]} onInput={(n) => (population[name] = n)} />
+        <NumberInput
+          controls={false}
+          value={population[name]}
+          onInput={(n) => (population[name] = n)}
+        />
       </Controller>
     )
   }
