@@ -1,7 +1,7 @@
 import { Resource } from "./types/Resource"
 
-export const lumber: Resource = {
-  name: "Lumber",
+export const wood: Resource = {
+  name: "Wood",
   type: "raw",
 }
 
