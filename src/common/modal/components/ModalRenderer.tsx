@@ -59,11 +59,11 @@ const Container = styled.div<{ status: TransitionStatus }>`
 
 const ContentAnimation = keyframes`
   0% {
-    transform: translateY(10px);
+    transform: scale(0.9);
   }
 
   100% {
-    transform: translateY(0px);
+    transform: scale(1);
   }
 `
 
