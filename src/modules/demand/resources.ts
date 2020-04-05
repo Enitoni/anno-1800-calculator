@@ -404,3 +404,8 @@ export const chocolate: Resource = {
   name: "Chocolate",
   type: "basic",
 }
+
+export const oil: Resource = {
+  name: "Oil",
+  type: "raw",
+}
