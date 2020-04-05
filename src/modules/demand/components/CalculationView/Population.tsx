@@ -40,6 +40,7 @@ export function Population(props: CalculationPopulationProps) {
         <NumberInput
           controls={false}
           value={population[name]}
+          min={0}
           onInput={(n) => (population[name] = n)}
         />
       </Controller>
