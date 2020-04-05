@@ -4,23 +4,31 @@ import { ResourceName } from "../types/ResourceName"
 
 import * as residences from "../residences"
 
-const defaultPopulation: Record<ResidenceName, number> = {
-  farmer: 0,
-  worker: 0,
-  artisan: 0,
-  engineer: 0,
-  investor: 0,
-  journalero: 0,
-  obrero: 0,
+export type SerializedCalculation = {
+  name: string
+  population: Record<ResidenceName, number>
+}
+
+export const defaultCalculation: SerializedCalculation = {
+  name: "Unnamed Island",
+  population: {
+    farmer: 0,
+    worker: 0,
+    artisan: 0,
+    engineer: 0,
+    investor: 0,
+    journalero: 0,
+    obrero: 0,
+  },
 }
 
 export class DemandCalculation {
   @observable public name: string
   @observable public population: Record<ResidenceName, number>
 
-  constructor(name = "Unnamed Island", population = defaultPopulation) {
-    this.name = name
-    this.population = population
+  constructor(data = defaultCalculation) {
+    this.name = data.name
+    this.population = data.population
   }
 
   @computed
@@ -43,5 +51,12 @@ export class DemandCalculation {
     }
 
     return result
+  }
+
+  public get serialized(): SerializedCalculation {
+    return {
+      name: this.name,
+      population: this.population,
+    }
   }
 }
