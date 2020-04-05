@@ -18,7 +18,7 @@ export const defaultCalculation: SerializedCalculation = {
     artisan: 0,
     engineer: 0,
     investor: 0,
-    journalero: 0,
+    jornalero: 0,
     obrero: 0,
   },
 }

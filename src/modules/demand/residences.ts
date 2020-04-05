@@ -178,8 +178,8 @@ export const investor: Residence = {
   ],
 }
 
-export const journalero: Residence = {
-  name: "Journaleros",
+export const jornalero: Residence = {
+  name: "Jornaleros",
   needs: [
     {
       resource: "friedPlantains",
@@ -197,7 +197,7 @@ export const journalero: Residence = {
 }
 
 export const obrero: Residence = {
-  name: "Obrero",
+  name: "Obreros",
   needs: [
     {
       resource: "friedPlantains",
