@@ -5,6 +5,7 @@ import { Button } from "../../button/components/Button"
 import { FIELDSET_ELEMENT_HEIGHT } from "../constants"
 import { size } from "polished"
 import styled, { css } from "../../../modules/theming/custom"
+import { clamp } from "../../lang/math/clamp"
 
 const Container = styled.div`
   display: flex;
@@ -86,21 +87,26 @@ const InputButton = styled(Button)<{ first: boolean }>`
 export type NumberInputProps = {
   value: number
   controls?: boolean
+  min?: number
+  max?: number
   onInput: (n: number) => void
 }
 
 export function NumberInput(props: NumberInputProps) {
-  const { value = 0, controls = true } = props
+  const { value = 0, controls = true, min = -Infinity, max = Infinity } = props
 
   const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
-    setValue(Number(event.target.value))
+    const safeNumber = Number(event.target.value)
+    const clampedNumber = clamp(safeNumber, min, max)
+
+    setValue(clampedNumber)
   }
 
   const handleScroll = (event: WheelEvent<HTMLInputElement>) => {
     event.preventDefault()
 
     const delta = Math.sign(event.deltaY)
-    const amount = event.ctrlKey ? 5 : 1
+    const amount = event.ctrlKey ? 10 : 1
 
     if (delta > 0) {
       setValue(value - amount)
