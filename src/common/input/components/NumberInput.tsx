@@ -12,7 +12,7 @@ const Container = styled.div`
 
 const InputContainer = styled.div``
 
-const Input = styled.input`
+const Input = styled.input<{ controls: boolean }>`
   font-size: 0.8em;
   font-weight: 600;
   text-align: center;
@@ -25,9 +25,14 @@ const Input = styled.input`
 
   ${(props) => inputStyle(props)}
 
-  & {
-    border-radius: 0px;
-  }
+  ${(props) =>
+    props.controls
+      ? css`
+          & {
+            border-radius: 0px;
+          }
+        `
+      : undefined}
 
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
@@ -80,11 +85,12 @@ const InputButton = styled(Button)<{ first: boolean }>`
 
 export type NumberInputProps = {
   value: number
+  controls?: boolean
   onInput: (n: number) => void
 }
 
 export function NumberInput(props: NumberInputProps) {
-  const { value = 0 } = props
+  const { value = 0, controls = true } = props
 
   const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
     setValue(Number(event.target.value))
@@ -109,7 +115,9 @@ export function NumberInput(props: NumberInputProps) {
 
   return (
     <Container>
-      <InputButton first={true} onClick={() => setValue(value - 1)} label="-" />
+      {controls ?? (
+        <InputButton first={true} onClick={() => setValue(value - 1)} label="-" />
+      )}
       <InputContainer>
         <Input
           type="number"
@@ -117,9 +125,12 @@ export function NumberInput(props: NumberInputProps) {
           onChange={() => {}}
           onWheel={handleScroll}
           onInput={handleInput}
+          controls={controls}
         />
       </InputContainer>
-      <InputButton first={false} onClick={() => setValue(value + 1)} label="+" />
+      {controls ?? (
+        <InputButton first={false} onClick={() => setValue(value + 1)} label="+" />
+      )}
     </Container>
   )
 }
