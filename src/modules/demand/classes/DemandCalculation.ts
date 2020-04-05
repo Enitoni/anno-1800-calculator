@@ -4,16 +4,23 @@ import { ResourceName } from "../types/ResourceName"
 
 import * as residences from "../residences"
 
+const defaultPopulation: Record<ResidenceName, number> = {
+  farmer: 0,
+  worker: 0,
+  artisan: 0,
+  engineer: 0,
+  investor: 0,
+  journalero: 0,
+  obrero: 0,
+}
+
 export class DemandCalculation {
-  @observable public name = "Unnamed Island"
-  @observable public population: Record<ResidenceName, number> = {
-    farmer: 0, // set this to 0 when there's ui for it,
-    worker: 0,
-    artisan: 0,
-    engineer: 0,
-    investor: 0,
-    journalero: 0,
-    obrero: 0,
+  @observable public name: string
+  @observable public population: Record<ResidenceName, number>
+
+  constructor(name = "Unnamed Island", population = defaultPopulation) {
+    this.name = name
+    this.population = population
   }
 
   @computed
