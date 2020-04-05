@@ -52,7 +52,7 @@ export function Population(props: CalculationPopulationProps) {
     const residence = residences[name]
 
     return (
-      <Controller>
+      <Controller key={residence.name}>
         <ControllerHeader>
           <Avatar src={`/img/residences/${slugify(residence.name)}.png`} />
           <ControllerLabel>{residence.name}</ControllerLabel>
