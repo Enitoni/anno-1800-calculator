@@ -15,8 +15,8 @@ export const fish: Resource = {
   type: "basic",
 }
 
-export const potato: Resource = {
-  name: "Potato",
+export const potatoes: Resource = {
+  name: "Potatoes",
   type: "raw",
 }
 
@@ -130,8 +130,8 @@ export const beef: Resource = {
   type: "raw",
 }
 
-export const redPepper: Resource = {
-  name: "Red Pepper",
+export const redPeppers: Resource = {
+  name: "Red Peppers",
   type: "raw",
 }
 
