@@ -1,5 +1,5 @@
 import React from "react"
-import { getTransparency } from "../../../../modules/theming/helpers"
+import { getTransparency, getColor } from "../../../../modules/theming/helpers"
 import styled from "../../../../modules/theming/custom"
 
 const Container = styled.header`
@@ -13,9 +13,12 @@ const Container = styled.header`
 `
 
 const Title = styled.h1`
-  font-weight: 600;
-  font-size: 18px;
+  font-weight: 800;
+  font-size: 1em;
   line-height: 130%;
+  text-transform: uppercase;
+
+  color: ${getColor("accent")};
 `
 
 export type HeaderProps = {
