@@ -97,6 +97,8 @@ export function NumberInput(props: NumberInputProps) {
   }
 
   const handleScroll = (event: WheelEvent<HTMLInputElement>) => {
+    event.preventDefault()
+
     const delta = Math.sign(event.deltaY)
     const amount = event.ctrlKey ? 5 : 1
 
