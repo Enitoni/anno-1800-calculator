@@ -240,8 +240,8 @@ export const advancedWeapons: Resource = {
   type: "material",
 }
 
-export const caoutchoc: Resource = {
-  name: "Caoutchoc",
+export const caoutchouc: Resource = {
+  name: "Caoutchouc",
   type: "raw",
 }
 
