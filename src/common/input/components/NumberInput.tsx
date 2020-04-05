@@ -97,9 +97,11 @@ export function NumberInput(props: NumberInputProps) {
 
   const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
     const safeNumber = Number(event.target.value)
-    const clampedNumber = clamp(safeNumber, min, max)
+    setValueSafely(safeNumber)
+  }
 
-    setValue(clampedNumber)
+  const setValueSafely = (n: number) => {
+    setValue(clamp(n, min, max))
   }
 
   const handleScroll = (event: WheelEvent<HTMLInputElement>) => {
@@ -109,9 +111,9 @@ export function NumberInput(props: NumberInputProps) {
     const amount = event.ctrlKey ? 10 : 1
 
     if (delta > 0) {
-      setValue(value - amount)
+      setValueSafely(value - amount)
     } else {
-      setValue(value + amount)
+      setValueSafely(value + amount)
     }
   }
 
