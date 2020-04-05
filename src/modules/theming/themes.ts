@@ -5,6 +5,7 @@ export const darkTheme: Theme = {
     primary: "#262626",
     accent: "#EC853B",
     background: "#171717",
+    overlay: "rgba(0, 0, 0, 0.7)",
   },
   fontColors: {
     normal: "#e0e0e0",

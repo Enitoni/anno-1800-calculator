@@ -3,6 +3,7 @@ export type Theme = {
     background: string
     primary: string
     accent: string
+    overlay: string
   }
   fontColors: {
     normal: string

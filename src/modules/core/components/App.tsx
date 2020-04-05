@@ -4,6 +4,7 @@ import { GlobalStyles } from "../../theming/components/GlobalStyles"
 import { Header } from "./Header"
 import styled from "../../theming/custom"
 import { Body } from "./Body"
+import { ModalOverlay } from "../../../common/modal/components/ModalOverlay"
 
 const Main = styled.main`
   display: block;
@@ -17,6 +18,7 @@ export function App() {
         <Header />
         <Body />
       </Main>
+      <ModalOverlay />
     </ThemeProvider>
   )
 }

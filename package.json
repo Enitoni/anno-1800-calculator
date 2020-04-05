@@ -24,6 +24,7 @@
     "@types/node": "^12.12.7",
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.9.4",
+    "@types/react-transition-group": "^4.2.4",
     "@types/styled-components": "^4.4.0",
     "@typescript-eslint/eslint-plugin": "^2.6.1",
     "@typescript-eslint/parser": "^2.6.1",
@@ -50,6 +51,7 @@
     "polished": "^3.5.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
+    "react-transition-group": "^4.3.0",
     "styled-components": "^4.4.1",
     "url-pattern": "^1.0.3"
   }
