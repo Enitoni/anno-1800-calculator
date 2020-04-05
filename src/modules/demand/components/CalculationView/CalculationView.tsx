@@ -21,6 +21,10 @@ const PopulationSection = styled(Section)`
   margin-top: 32px;
 `
 
+const ResultSection = styled(Section)`
+  margin-top: 32px;
+`
+
 export function CalculationView(props: CalculationViewProps) {
   const { calculation } = props
 
@@ -32,6 +36,9 @@ export function CalculationView(props: CalculationViewProps) {
       <PopulationSection label="Population">
         <Population calculation={calculation} />
       </PopulationSection>
+      <ResultSection label="Result (Temporarily JSON)">
+        <pre>{JSON.stringify(calculation.demand, null, " ")}</pre>
+      </ResultSection>
     </Container>
   ))
 }

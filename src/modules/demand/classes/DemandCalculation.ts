@@ -25,7 +25,9 @@ export class DemandCalculation {
       result[name] = existing ? existing + amount : amount
     }
 
-    for (const [name, population] of Object.entries(this.population)) {
+    const filteredPopulation = Object.entries(this.population).filter(([_, p]) => p > 0)
+
+    for (const [name, population] of filteredPopulation) {
       const residence = residences[name as ResidenceName]
 
       residence.needs
