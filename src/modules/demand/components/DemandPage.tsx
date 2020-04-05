@@ -4,10 +4,13 @@ import styled from "../../theming/custom"
 import { Section } from "../../core/components/Section"
 import { SIDEBAR_WIDTH } from "../../core/constants"
 import { PrimaryButton } from "../../../common/button/components/PrimaryButton"
-import { useStores } from "../../../common/state/hooks/useStores"
 import { useObserver } from "mobx-react-lite"
 import { CalculationItem } from "./CalculationItem"
 import { CalculationView } from "./CalculationView/CalculationView"
+import { ButtonList } from "../../../common/button/components/ButtonList"
+import { SaveCalculationsModal } from "./SaveCalculationsModal"
+import { useManager } from "../../../common/state/hooks/useManager"
+import { importCalculations } from "../actions/importCalculations"
 
 const Container = styled.div`
   display: flex;
@@ -23,17 +26,14 @@ const CalculationList = styled.div`
   margin-bottom: 8px;
 `
 
-const SaveLoadSection = styled(Section)`
-  margin-top: 32px;
-`
-
 const SelectedCalculation = styled.div`
   margin-left: 64px;
   flex: 1;
 `
 
 export function DemandPage() {
-  const { demandStore } = useStores()
+  const manager = useManager()
+  const { demandStore, modalStore } = manager.stores
 
   const renderSelected = () => {
     const { selected } = demandStore
@@ -42,9 +42,24 @@ export function DemandPage() {
     return <CalculationView calculation={selected} />
   }
 
+  const spawnSaveModal = () =>
+    modalStore.spawn({
+      key: "save-calculations",
+      render: () => <SaveCalculationsModal />,
+    })
+
   return useObserver(() => (
     <>
-      <PageTitle title="Resident demands" icon="box" />
+      <PageTitle title="Resident demands" icon="box">
+        <ButtonList horizontal>
+          <PrimaryButton icon="save" label="Export" onClick={spawnSaveModal} />
+          <PrimaryButton
+            icon="folder"
+            label="Import"
+            onClick={() => importCalculations(manager)}
+          />
+        </ButtonList>
+      </PageTitle>
       <Container>
         <Sidebar>
           <Section label="Your islands">
@@ -60,7 +75,6 @@ export function DemandPage() {
               icon="circledPlus"
             />
           </Section>
-          <SaveLoadSection label="Save / Load">Nothing here yet...</SaveLoadSection>
         </Sidebar>
         <SelectedCalculation>{renderSelected()}</SelectedCalculation>
       </Container>

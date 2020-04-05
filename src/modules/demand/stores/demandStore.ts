@@ -17,15 +17,16 @@ export class DemandStore implements InitializableStore {
   @observable public selected!: DemandCalculation
 
   public init() {
-    this.calculations = storedCalculations
-      .restore()
-      .map((data) => new DemandCalculation(data))
-
-    this.selected = this.calculations[0]
+    this.load(storedCalculations.restore())
 
     autorun(() => {
       storedCalculations.save(this.calculations)
     })
+  }
+
+  public load(data: SerializedCalculation[]) {
+    this.calculations = data.map((c) => new DemandCalculation(c))
+    this.selected = this.calculations[0]
   }
 
   public add() {
