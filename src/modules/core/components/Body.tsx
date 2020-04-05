@@ -9,6 +9,8 @@ const Container = styled.div`
 
   display: flex;
   justify-content: center;
+  padding: 0px 16px;
+  padding-bottom: 32px;
 `
 
 const Content = styled.div`
