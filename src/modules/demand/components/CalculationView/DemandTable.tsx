@@ -60,6 +60,9 @@ export function DemandTable(props: DemandTableProps) {
             <Table.Row>
               <Table.HeadColumn>Name</Table.HeadColumn>
               <Table.HeadColumn>Consumption</Table.HeadColumn>
+              <Table.HeadColumn>Required chains</Table.HeadColumn>
+              <Table.HeadColumn>Efficiency</Table.HeadColumn>
+              <Table.HeadColumn>Production per chain</Table.HeadColumn>
             </Table.Row>
           </Table.Head>
           <Table.Body>
@@ -71,7 +74,14 @@ export function DemandTable(props: DemandTableProps) {
                     <Name>{demand.name}</Name>
                   </NameContainer>
                 </Table.Data>
-                <Table.Data>{demand.consumption.toFixed(4)}</Table.Data>
+                <Table.Data>
+                  {demand.consumption.toFixed(4).replace(/\.?0+$/, "")}
+                </Table.Data>
+                <Table.Data>{demand.requiredChains}x</Table.Data>
+                <Table.Data>{demand.chainEffiency.toFixed(2)}%</Table.Data>
+                <Table.Data>
+                  {demand.productionPerChain.toFixed(4).replace(/\.?0+$/, "")}
+                </Table.Data>
               </Table.Row>
             ))}
           </Table.Body>
