@@ -92,6 +92,9 @@ const prodConfig = {
     minimize: true,
     nodeEnv: "production",
   },
+  output: {
+    publicPath: "/anno-calculator",
+  },
 }
 
 module.exports = (() => {

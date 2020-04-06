@@ -54,7 +54,11 @@ export function Population(props: CalculationPopulationProps) {
     return (
       <Controller key={residence.name}>
         <ControllerHeader>
-          <Avatar src={`/img/residences/${slugify(residence.name)}.png`} />
+          <Avatar
+            src={`${__webpack_public_path__}/img/residences/${slugify(
+              residence.name,
+            )}.png`}
+          />
           <ControllerLabel>{residence.name}</ControllerLabel>
         </ControllerHeader>
         <NumberInput

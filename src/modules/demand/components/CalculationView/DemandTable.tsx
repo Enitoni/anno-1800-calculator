@@ -70,7 +70,11 @@ export function DemandTable(props: DemandTableProps) {
               <Table.Row key={demand.name + i}>
                 <Table.Data>
                   <NameContainer>
-                    <Image src={`/img/resources/${slugify(demand.name)}.png`} />
+                    <Image
+                      src={`${__webpack_public_path__}/img/resources/${slugify(
+                        demand.name,
+                      )}.png`}
+                    />
                     <Name>{demand.name}</Name>
                   </NameContainer>
                 </Table.Data>
