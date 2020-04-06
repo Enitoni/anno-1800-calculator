@@ -14,12 +14,14 @@ export const useRouter = (routes: Route[]) => {
   const { routingStore } = useStores()
 
   return useObserver(() => {
-    const { pathname } = routingStore.location
+    const { hash } = routingStore.location
 
     for (const route of routes) {
-      const match = new UrlPattern(`${__webpack_public_path__}${route.pattern}`, {
+      const match = new UrlPattern(`#${route.pattern}`, {
         segmentValueCharset: "a-zA-Z0-9-_~%.",
-      }).match(pathname)
+      }).match(hash)
+
+      console.log(hash)
 
       if (match) {
         return [route.name, () => route.render(match)] as const

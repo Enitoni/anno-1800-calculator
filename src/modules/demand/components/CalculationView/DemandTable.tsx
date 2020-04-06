@@ -7,6 +7,7 @@ import { size } from "polished"
 import { slugify } from "../../../../common/lang/string/slugify"
 import { getTransparency } from "../../../theming/helpers"
 import { TextInput } from "../../../../common/input/components/TextInput"
+import { join } from "path"
 
 export type DemandTableProps = {
   calculation: DemandCalculation
@@ -71,9 +72,10 @@ export function DemandTable(props: DemandTableProps) {
                 <Table.Data>
                   <NameContainer>
                     <Image
-                      src={`${__webpack_public_path__}/img/resources/${slugify(
-                        demand.name,
-                      )}.png`}
+                      src={join(
+                        __webpack_public_path__,
+                        `/img/resources/${slugify(demand.name)}.png`,
+                      )}
                     />
                     <Name>{demand.name}</Name>
                   </NameContainer>

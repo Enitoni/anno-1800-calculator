@@ -8,6 +8,7 @@ import { useObserver } from "mobx-react-lite"
 import { getColor } from "../../../theming/helpers"
 import { size } from "polished"
 import { slugify } from "../../../../common/lang/string/slugify"
+import { join } from "path"
 
 export type CalculationPopulationProps = {
   calculation: DemandCalculation
@@ -55,9 +56,10 @@ export function Population(props: CalculationPopulationProps) {
       <Controller key={residence.name}>
         <ControllerHeader>
           <Avatar
-            src={`${__webpack_public_path__}/img/residences/${slugify(
-              residence.name,
-            )}.png`}
+            src={join(
+              __webpack_public_path__,
+              `/img/residences/${slugify(residence.name)}.png`,
+            )}
           />
           <ControllerLabel>{residence.name}</ControllerLabel>
         </ControllerHeader>

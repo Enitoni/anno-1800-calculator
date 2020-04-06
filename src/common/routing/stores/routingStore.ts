@@ -20,12 +20,12 @@ class RoutingStore implements InitializableStore {
   }
 
   public push = (path: string) => {
-    if (path === this.location.pathname) return
-    this.history.push(path)
+    if (path === this.location.hash) return
+    this.history.push("#" + path)
   }
 
   public replace = (path: string) => {
-    this.history.replace(path)
+    this.history.replace("#" + path)
   }
 }
 
