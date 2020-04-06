@@ -380,14 +380,9 @@ export const tobacco: Resource = {
   type: "raw",
 }
 
-export const basicCigars: Resource = {
+export const cigars: Resource = {
   name: "Cigars",
   type: "basic",
-}
-
-export const luxuryCigars: Resource = {
-  name: "Cigars",
-  type: "luxury",
 }
 
 export const sugar: Resource = {

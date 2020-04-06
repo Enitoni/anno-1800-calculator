@@ -1076,7 +1076,7 @@ export const tobaccoPlantation: Building = {
 
 export const cigarFactory: Building = {
   name: "Cigar Factory",
-  product: "basicCigars",
+  product: "cigars",
   processingTime: 30,
   costs: [
     { resource: "timber", amount: 10 },

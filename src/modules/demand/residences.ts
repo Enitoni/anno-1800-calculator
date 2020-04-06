@@ -148,7 +148,7 @@ export const investors: Residence = {
       amount: 0.0004704,
     },
     {
-      resource: "basicCigars",
+      resource: "cigars",
       amount: 0.000444444,
     },
     {
@@ -232,7 +232,7 @@ export const obreros: Residence = {
       amount: 0.001333332,
     },
     {
-      resource: "luxuryCigars",
+      resource: "cigars",
       amount: 0.000555555,
     },
   ],

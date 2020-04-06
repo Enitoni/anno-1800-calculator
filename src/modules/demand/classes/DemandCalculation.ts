@@ -4,10 +4,23 @@ import { ResourceName } from "../types/ResourceName"
 
 import * as residences from "../residences"
 import * as resources from "../resources"
+import * as buildings from "../buildings"
+import { Building } from "../types/Building"
+import { Residence } from "../types/Residence"
+import { Resource } from "../types/Resource"
+
+/** Cached lookup object to easily associate building by product */
+const buildingsByProduct = Object.fromEntries(
+  Object.values(buildings).map((b) => [b.product, b] as const),
+) as Record<ResourceName, Building>
 
 export type SerializedCalculation = {
   name: string
   population: Record<ResidenceName, number>
+}
+
+export type AssociatedResource = Resource & {
+  building: Building
 }
 
 export const defaultCalculation: SerializedCalculation = {
@@ -33,28 +46,72 @@ export class DemandCalculation {
   }
 
   @computed
+  // Returns a tree of associated metadata used in calculations
+  public get tree() {
+    const mapResource = (name: ResourceName): AssociatedResource => {
+      const resource = resources[name]
+      const building = buildingsByProduct[name]
+
+      if (!building) {
+        console.log({ building, resource })
+      }
+
+      return {
+        ...resource,
+        building,
+      }
+    }
+
+    const mapNeed = (need: Residence["needs"][0]) => {
+      return {
+        resource: mapResource(need.resource),
+        amount: need.amount,
+      }
+    }
+
+    return Object.entries(this.population)
+      .filter(([_, p]) => p > 0)
+      .map(([name, population]) => ({ ...residences[name as ResidenceName], population }))
+      .map((residence) => ({
+        ...residence,
+        needs: residence.needs.map(mapNeed),
+      }))
+  }
+
+  @computed
   public get demand() {
-    const result: Partial<Record<ResourceName, number>> = {}
+    const map = new Map<
+      AssociatedResource,
+      AssociatedResource & { consumption: number }
+    >()
 
-    const add = (name: ResourceName, amount: number) => {
-      const existing = result[name]
-      result[name] = existing ? existing + amount : amount
+    // Add consumption to resource
+    const add = (resource: AssociatedResource, amount: number) => {
+      const existing = map.get(resource)
+
+      if (existing) {
+        existing.consumption += amount
+        return
+      }
+
+      map.set(resource, { consumption: amount, ...resource })
     }
 
-    const filteredPopulation = Object.entries(this.population).filter(([_, p]) => p > 0)
+    // Loop through residences and add consumption to resources
+    this.tree.forEach((entry) =>
+      entry.needs.forEach((need) => add(need.resource, need.amount * entry.population)),
+    )
 
-    for (const [name, population] of filteredPopulation) {
-      const residence = residences[name as ResidenceName]
+    // Loop through accumulated resources and calculate production
+    return [...map.values()].map((entry) => {
+      const { building, consumption } = entry
 
-      residence.needs
-        .map((need) => [need.resource, need.amount * population] as const)
-        .forEach(([resource, amount]) => add(resource, amount))
-    }
+      const productionPerChain = 60 / building.processingTime
+      const requiredChains = Math.ceil(consumption / productionPerChain)
+      const chainEffiency = (consumption / (requiredChains * productionPerChain)) * 100
 
-    return Object.entries(result).map(([key, consumption]) => ({
-      ...resources[key as ResourceName],
-      consumption: consumption!,
-    }))
+      return { ...entry, productionPerChain, requiredChains, chainEffiency }
+    })
   }
 
   public get serialized(): SerializedCalculation {
