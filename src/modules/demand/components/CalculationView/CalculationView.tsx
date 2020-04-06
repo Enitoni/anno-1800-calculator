@@ -8,6 +8,9 @@ import { Population } from "./Population"
 import styled from "../../../theming/custom"
 import { Section } from "../../../core/components/Section"
 import { DemandTable } from "./DemandTable"
+import { SecondaryButton } from "../../../../common/button/components/SecondaryButton"
+import { deleteCalculation } from "../../actions/deleteCalculation"
+import { useManager } from "../../../../common/state/hooks/useManager"
 
 export type CalculationViewProps = {
   calculation: DemandCalculation
@@ -16,6 +19,15 @@ export type CalculationViewProps = {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+`
+
+const Info = styled.div`
+  display: flex;
+  align-items: flex-end;
+`
+
+const DeleteButton = styled(SecondaryButton)`
+  margin-left: 16px;
 `
 
 const PopulationSection = styled(Section)`
@@ -27,13 +39,24 @@ const ResultSection = styled(Section)`
 `
 
 export function CalculationView(props: CalculationViewProps) {
+  const manager = useManager()
+
   const { calculation } = props
+  const { demandStore } = manager.stores
 
   return useObserver(() => (
     <Container>
-      <FormField label="Name">
-        <TextInput {...bindTextToObservable(calculation, "name")} />
-      </FormField>
+      <Info>
+        <FormField label="Name">
+          <TextInput {...bindTextToObservable(calculation, "name")} />
+        </FormField>
+        <DeleteButton
+          icon="trashcan"
+          label="Delete"
+          onClick={() => deleteCalculation(manager, calculation)}
+          disabled={demandStore.calculations.length === 1}
+        />
+      </Info>
       <PopulationSection label="Population">
         <Population calculation={calculation} />
       </PopulationSection>

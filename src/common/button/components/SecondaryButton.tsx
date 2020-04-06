@@ -3,6 +3,7 @@ import { Button } from "./Button"
 import { FIELDSET_ELEMENT_HEIGHT } from "../../input/constants"
 import { getColor, getFontColor, getTransparency } from "../../../modules/theming/helpers"
 import { size } from "polished"
+import { css } from "styled-components"
 
 export const SecondaryButton = styled(Button)`
   display: inline-flex;
@@ -42,4 +43,12 @@ export const SecondaryButton = styled(Button)`
       fill: ${getColor("primary")};
     }
   }
+
+  ${(props) =>
+    props.disabled
+      ? css`
+          pointer-events: none;
+          opacity: 0.5;
+        `
+      : undefined}
 `

@@ -30,7 +30,15 @@ export class DemandStore implements InitializableStore {
   }
 
   public add() {
-    this.calculations.push(new DemandCalculation())
+    const calculation = new DemandCalculation()
+
+    this.calculations.push(calculation)
+    this.selected = calculation
+  }
+
+  public remove(calculation: DemandCalculation) {
+    this.calculations = this.calculations.filter((c) => c !== calculation)
+    this.selected = this.calculations[0]
   }
 }
 

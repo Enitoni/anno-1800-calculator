@@ -5,6 +5,7 @@ import { SVGIcon } from "../../icons/components/SVGIcon"
 
 export type ButtonVariants = {
   stretch?: boolean
+  disabled?: boolean
 }
 
 export type ButtonProps = ButtonVariants & {
@@ -16,7 +17,7 @@ export type ButtonProps = ButtonVariants & {
 }
 
 const Container = styled.button<ButtonVariants>`
-  ${props =>
+  ${(props) =>
     props.stretch &&
     `
     width: 100%;
@@ -32,7 +33,7 @@ const Inner = styled.span<ButtonVariants>`
     cursor: pointer;
   }
 
-  ${props =>
+  ${(props) =>
     props.stretch &&
     `
     width: 100%;
