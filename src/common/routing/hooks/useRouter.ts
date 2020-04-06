@@ -17,7 +17,7 @@ export const useRouter = (routes: Route[]) => {
     const { pathname } = routingStore.location
 
     for (const route of routes) {
-      const match = new UrlPattern(route.pattern, {
+      const match = new UrlPattern(`${__webpack_public_path__}/${route.pattern}`, {
         segmentValueCharset: "a-zA-Z0-9-_~%.",
       }).match(pathname)
 
