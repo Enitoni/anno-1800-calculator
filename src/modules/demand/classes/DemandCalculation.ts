@@ -80,21 +80,18 @@ export class DemandCalculation {
 
   @computed
   public get demand() {
-    const map = new Map<
-      AssociatedResource,
-      AssociatedResource & { consumption: number }
-    >()
+    const map = new Map<string, AssociatedResource & { consumption: number }>()
 
     // Add consumption to resource
     const add = (resource: AssociatedResource, amount: number) => {
-      const existing = map.get(resource)
+      const existing = map.get(resource.name)
 
       if (existing) {
         existing.consumption += amount
         return
       }
 
-      map.set(resource, { consumption: amount, ...resource })
+      map.set(resource.name, { consumption: amount, ...resource })
     }
 
     // Loop through residences and add consumption to resources
