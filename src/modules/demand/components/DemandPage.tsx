@@ -8,9 +8,9 @@ import { useObserver } from "mobx-react-lite"
 import { CalculationItem } from "./CalculationItem"
 import { CalculationView } from "./CalculationView/CalculationView"
 import { ButtonList } from "../../../common/button/components/ButtonList"
-import { SaveCalculationsModal } from "./SaveCalculationsModal"
 import { useManager } from "../../../common/state/hooks/useManager"
 import { importCalculations } from "../actions/importCalculations"
+import { saveToFile } from "../../../common/dom/helpers/saveToFile"
 
 const Container = styled.div`
   display: flex;
@@ -33,7 +33,7 @@ const SelectedCalculation = styled.div`
 
 export function DemandPage() {
   const manager = useManager()
-  const { demandStore, modalStore } = manager.stores
+  const { demandStore } = manager.stores
 
   const renderSelected = () => {
     const { selected } = demandStore
@@ -42,17 +42,17 @@ export function DemandPage() {
     return <CalculationView calculation={selected} />
   }
 
-  const spawnSaveModal = () =>
-    modalStore.spawn({
-      key: "save-calculations",
-      render: () => <SaveCalculationsModal />,
-    })
-
   return useObserver(() => (
     <>
       <PageTitle title="Resident demands" icon="box">
         <ButtonList horizontal>
-          <PrimaryButton icon="save" label="Export" onClick={spawnSaveModal} />
+          <PrimaryButton
+            icon="save"
+            label="Export"
+            onClick={() =>
+              saveToFile("calculations.json", JSON.stringify(demandStore.calculations))
+            }
+          />
           <PrimaryButton
             icon="folder"
             label="Import"
