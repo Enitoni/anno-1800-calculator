@@ -11,6 +11,8 @@ import { ButtonList } from "../../../common/button/components/ButtonList"
 import { useManager } from "../../../common/state/hooks/useManager"
 import { importCalculations } from "../actions/importCalculations"
 import { saveToFile } from "../../../common/dom/helpers/saveToFile"
+import { SecondaryButton } from "../../../common/button/components/SecondaryButton"
+import { clearAllCalculations } from "../actions/clearAllCalculations"
 
 const Container = styled.div`
   display: flex;
@@ -57,6 +59,11 @@ export function DemandPage() {
             icon="folder"
             label="Import"
             onClick={() => importCalculations(manager)}
+          />
+          <SecondaryButton
+            icon="trashcan"
+            label="Clear all"
+            onClick={() => clearAllCalculations(manager)}
           />
         </ButtonList>
       </PageTitle>
