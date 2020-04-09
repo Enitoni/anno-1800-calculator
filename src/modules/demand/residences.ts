@@ -45,6 +45,10 @@ export const workers: Residence = {
       resource: "beer",
       amount: 0.00076923,
     },
+    {
+      resource: "schnapps",
+      amount: 0.003333336,
+    },
   ],
 }
 
