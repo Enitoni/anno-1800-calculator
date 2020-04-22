@@ -51,9 +51,7 @@ export function DemandPage() {
           <PrimaryButton
             icon="save"
             label="Export"
-            onClick={() =>
-              saveToFile("calculations.json", JSON.stringify(islandStore.islands))
-            }
+            onClick={() => saveToFile("demand.json", JSON.stringify(islandStore.islands))}
           />
           <PrimaryButton
             icon="folder"

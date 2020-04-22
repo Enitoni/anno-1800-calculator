@@ -5,6 +5,7 @@ import React from "react"
 
 export type FormFieldProps = PropsWithChildren<{
   label: string
+  className?: string
 }>
 
 const Container = styled.div`
@@ -23,10 +24,10 @@ const Label = styled.label`
 `
 
 export function FormField(props: FormFieldProps) {
-  const { label, children } = props
+  const { label, className, children } = props
 
   return (
-    <Container>
+    <Container className={className}>
       <Label>{label}</Label>
       {children}
     </Container>

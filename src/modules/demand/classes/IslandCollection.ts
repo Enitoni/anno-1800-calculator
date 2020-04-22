@@ -24,6 +24,8 @@ export class IslandCollection {
   public add() {
     const island = new Island()
     this.islands.push(island)
+
+    return island
   }
 
   public remove(island: Island) {

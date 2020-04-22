@@ -3,14 +3,15 @@ import { Manager } from "../../../common/state/types/Manager"
 import { renderConfirmationModal } from "../../../common/modal/helpers/renderConfirmationModal"
 
 export const deleteIsland = (manager: Manager, island: Island) => {
-  const { demandStore, modalStore } = manager.stores
+  const { islandStore, modalStore } = manager.stores
+  const collection = islandStore.getCollectionByIsland(island)
 
   modalStore.spawn({
-    key: "delete-calculation",
+    key: "delete-island",
     render: renderConfirmationModal(
       "Delete island?",
       `Are you sure you want to delete "${island.name}"?`,
-      () => demandStore.remove(island),
+      () => collection.remove(island),
     ),
   })
 }

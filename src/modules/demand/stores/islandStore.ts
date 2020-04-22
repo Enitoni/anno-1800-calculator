@@ -19,9 +19,9 @@ export class IslandStore implements InitializableStore {
   public init() {
     this.load(storedCollections.restore())
 
-    /*autorun(() => {
-      storedCalculations.save(this.islands)
-    })*/
+    autorun(() => {
+      storedCollections.save(this.collections)
+    })
   }
 
   public load(data: SerializedIslandCollection[]) {
@@ -42,8 +42,18 @@ export class IslandStore implements InitializableStore {
     this.selected = island
   }
 
+  public remove(collection: IslandCollection) {
+    const hadChildSelected = collection.islands.some((i) => i === this.selected)
+
+    this.collections = this.collections.filter((c) => c !== collection)
+
+    if (hadChildSelected) {
+      this.selected = this.islands[0]
+    }
+  }
+
   public getCollectionByIsland(island: Island) {
-    return this.collections.find((c) => c.islands.some((i) => i === island))
+    return this.collections.find((c) => c.islands.some((i) => i === island))!
   }
 
   @computed

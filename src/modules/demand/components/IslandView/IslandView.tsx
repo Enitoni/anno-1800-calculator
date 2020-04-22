@@ -8,8 +8,6 @@ import { Population } from "./Population"
 import styled from "../../../theming/custom"
 import { Section } from "../../../core/components/Section"
 import { DemandTable } from "./DemandTable"
-import { SecondaryButton } from "../../../../common/button/components/SecondaryButton"
-import { deleteIsland } from "../../actions/deleteIsland"
 import { useManager } from "../../../../common/state/hooks/useManager"
 
 export type IslandViewProps = {
@@ -26,10 +24,6 @@ const Info = styled.div`
   align-items: flex-end;
 `
 
-const DeleteButton = styled(SecondaryButton)`
-  margin-left: 16px;
-`
-
 const PopulationSection = styled(Section)`
   margin-top: 32px;
 `
@@ -38,11 +32,18 @@ const ResultSection = styled(Section)`
   margin-top: 32px;
 `
 
+const CollectionNameField = styled(FormField)`
+  max-width: 230px;
+  margin-left: 16px;
+`
+
 export function IslandView(props: IslandViewProps) {
   const manager = useManager()
 
   const { island } = props
   const { islandStore } = manager.stores
+
+  const collection = islandStore.getCollectionByIsland(island)
 
   return useObserver(() => (
     <Container>
@@ -50,12 +51,9 @@ export function IslandView(props: IslandViewProps) {
         <FormField label="Name">
           <TextInput {...bindTextToObservable(island, "name")} />
         </FormField>
-        <DeleteButton
-          icon="trashcan"
-          label="Delete"
-          onClick={() => deleteIsland(manager, island)}
-          disabled={islandStore.islands.length === 1}
-        />
+        <CollectionNameField label="Collection name">
+          <TextInput {...bindTextToObservable(collection, "name")} />
+        </CollectionNameField>
       </Info>
       <PopulationSection label="Population">
         <Population island={island} />

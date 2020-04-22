@@ -16,13 +16,13 @@ const attemptLoad = async () => {
 }
 
 export const importIslands = async (manager: Manager) => {
-  const { demandStore, modalStore } = manager.stores
+  const { islandStore, modalStore } = manager.stores
 
   try {
-    const calculations = await attemptLoad()
-    if (!calculations) return
+    const collections = await attemptLoad()
+    if (!collections) return
 
-    demandStore.load(calculations)
+    islandStore.load(collections)
   } catch (e) {
     modalStore.spawn({
       key: "import-error",
