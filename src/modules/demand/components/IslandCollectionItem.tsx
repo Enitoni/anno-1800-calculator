@@ -24,6 +24,7 @@ const Header = styled.div`
 
 const Label = styled.span`
   flex: 1;
+  font-weight: 500;
 `
 
 const Actions = styled(ButtonList)`
@@ -31,7 +32,7 @@ const Actions = styled(ButtonList)`
 `
 
 const List = styled.div`
-  margin-left: 16px;
+  padding-left: 8px;
 `
 
 export function IslandCollectionItem(props: IslandCollectionItemProps) {
