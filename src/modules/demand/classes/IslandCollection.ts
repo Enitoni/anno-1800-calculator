@@ -7,7 +7,7 @@ export type SerializedIslandCollection = {
 }
 
 export const defaultIslandCollection: SerializedIslandCollection = {
-  name: "Unnamed category",
+  name: "",
   islands: [defaultIsland],
 }
 

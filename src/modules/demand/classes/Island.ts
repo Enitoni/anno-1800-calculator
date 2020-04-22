@@ -24,7 +24,7 @@ export type AssociatedResource = Resource & {
 }
 
 export const defaultIsland: SerializedIsland = {
-  name: "Unnamed Island",
+  name: "",
   population: {
     farmers: 0,
     workers: 0,

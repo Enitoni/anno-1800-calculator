@@ -5,7 +5,6 @@ import { Section } from "../../core/components/Section"
 import { SIDEBAR_WIDTH } from "../../core/constants"
 import { PrimaryButton } from "../../../common/button/components/PrimaryButton"
 import { useObserver } from "mobx-react-lite"
-import { IslandItem } from "./IslandItem"
 import { ButtonList } from "../../../common/button/components/ButtonList"
 import { useManager } from "../../../common/state/hooks/useManager"
 import { importIslands } from "../actions/importIslands"
@@ -13,6 +12,7 @@ import { saveToFile } from "../../../common/dom/helpers/saveToFile"
 import { SecondaryButton } from "../../../common/button/components/SecondaryButton"
 import { clearAllIslands } from "../actions/clearAllIslands"
 import { IslandView } from "./IslandView/IslandView"
+import { IslandCollectionItem } from "./IslandCollectionItem"
 
 const Container = styled.div`
   display: flex;
@@ -71,8 +71,8 @@ export function DemandPage() {
         <Sidebar>
           <Section label="Your islands">
             <CalculationList>
-              {islandStore.islands.map((c, i) => (
-                <IslandItem key={c.name + i} island={c} />
+              {islandStore.collections.map((c, i) => (
+                <IslandCollectionItem key={c.name + i} collection={c} />
               ))}
             </CalculationList>
             <PrimaryButton
