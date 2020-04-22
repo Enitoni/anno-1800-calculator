@@ -1,4 +1,4 @@
-import { DemandCalculation } from "../../classes/DemandCalculation"
+import { Island } from "../../classes/Island"
 import { useObserver } from "mobx-react-lite"
 import { TextInput } from "../../../../common/input/components/TextInput"
 import React from "react"
@@ -9,11 +9,11 @@ import styled from "../../../theming/custom"
 import { Section } from "../../../core/components/Section"
 import { DemandTable } from "./DemandTable"
 import { SecondaryButton } from "../../../../common/button/components/SecondaryButton"
-import { deleteCalculation } from "../../actions/deleteCalculation"
+import { deleteIsland } from "../../actions/deleteIsland"
 import { useManager } from "../../../../common/state/hooks/useManager"
 
-export type CalculationViewProps = {
-  calculation: DemandCalculation
+export type IslandViewProps = {
+  island: Island
 }
 
 const Container = styled.div`
@@ -38,30 +38,30 @@ const ResultSection = styled(Section)`
   margin-top: 32px;
 `
 
-export function CalculationView(props: CalculationViewProps) {
+export function IslandView(props: IslandViewProps) {
   const manager = useManager()
 
-  const { calculation } = props
+  const { island } = props
   const { demandStore } = manager.stores
 
   return useObserver(() => (
     <Container>
       <Info>
         <FormField label="Name">
-          <TextInput {...bindTextToObservable(calculation, "name")} />
+          <TextInput {...bindTextToObservable(island, "name")} />
         </FormField>
         <DeleteButton
           icon="trashcan"
           label="Delete"
-          onClick={() => deleteCalculation(manager, calculation)}
-          disabled={demandStore.calculations.length === 1}
+          onClick={() => deleteIsland(manager, island)}
+          disabled={demandStore.islands.length === 1}
         />
       </Info>
       <PopulationSection label="Population">
-        <Population calculation={calculation} />
+        <Population calculation={island} />
       </PopulationSection>
       <ResultSection label="Result">
-        <DemandTable calculation={calculation} />
+        <DemandTable calculation={island} />
       </ResultSection>
     </Container>
   ))

@@ -1,4 +1,4 @@
-import { DemandCalculation } from "../classes/DemandCalculation"
+import { Island } from "../classes/Island"
 import styled, { css } from "styled-components"
 import { useObserver } from "mobx-react-lite"
 import React from "react"
@@ -6,7 +6,7 @@ import { getFontColor, getColor } from "../../theming/helpers"
 import { useStores } from "../../../common/state/hooks/useStores"
 
 export type CalculationItemProps = {
-  calculation: DemandCalculation
+  calculation: Island
 }
 
 const Container = styled.div<{ active: boolean }>`

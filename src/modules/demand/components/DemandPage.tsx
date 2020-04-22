@@ -6,13 +6,13 @@ import { SIDEBAR_WIDTH } from "../../core/constants"
 import { PrimaryButton } from "../../../common/button/components/PrimaryButton"
 import { useObserver } from "mobx-react-lite"
 import { CalculationItem } from "./CalculationItem"
-import { CalculationView } from "./CalculationView/CalculationView"
 import { ButtonList } from "../../../common/button/components/ButtonList"
 import { useManager } from "../../../common/state/hooks/useManager"
-import { importCalculations } from "../actions/importCalculations"
+import { importIslands } from "../actions/importIslands"
 import { saveToFile } from "../../../common/dom/helpers/saveToFile"
 import { SecondaryButton } from "../../../common/button/components/SecondaryButton"
-import { clearAllCalculations } from "../actions/clearAllCalculations"
+import { clearAllIslands } from "../actions/clearAllIslands"
+import { IslandView } from "./IslandView/IslandView"
 
 const Container = styled.div`
   display: flex;
@@ -41,7 +41,7 @@ export function DemandPage() {
     const { selected } = demandStore
     if (!selected) return
 
-    return <CalculationView calculation={selected} />
+    return <IslandView island={selected} />
   }
 
   return useObserver(() => (
@@ -52,18 +52,18 @@ export function DemandPage() {
             icon="save"
             label="Export"
             onClick={() =>
-              saveToFile("calculations.json", JSON.stringify(demandStore.calculations))
+              saveToFile("calculations.json", JSON.stringify(demandStore.islands))
             }
           />
           <PrimaryButton
             icon="folder"
             label="Import"
-            onClick={() => importCalculations(manager)}
+            onClick={() => importIslands(manager)}
           />
           <SecondaryButton
             icon="trashcan"
             label="Clear all"
-            onClick={() => clearAllCalculations(manager)}
+            onClick={() => clearAllIslands(manager)}
           />
         </ButtonList>
       </PageTitle>
@@ -71,7 +71,7 @@ export function DemandPage() {
         <Sidebar>
           <Section label="Your islands">
             <CalculationList>
-              {demandStore.calculations.map((c, i) => (
+              {demandStore.islands.map((c, i) => (
                 <CalculationItem key={c.name + i} calculation={c} />
               ))}
             </CalculationList>

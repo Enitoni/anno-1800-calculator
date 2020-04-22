@@ -1,4 +1,4 @@
-import { DemandCalculation } from "../../classes/DemandCalculation"
+import { Island } from "../../classes/Island"
 import styled from "../../../theming/custom"
 import React from "react"
 import { ResidenceName } from "../../types/ResidenceName"
@@ -11,7 +11,7 @@ import { slugify } from "../../../../common/lang/string/slugify"
 import { join } from "path"
 
 export type CalculationPopulationProps = {
-  calculation: DemandCalculation
+  calculation: Island
 }
 
 const Container = styled.div`

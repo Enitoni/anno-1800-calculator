@@ -1,49 +1,44 @@
 import { InitializableStore } from "../../../common/state/types/InitializableStore"
 import { observable, autorun } from "mobx"
-import {
-  DemandCalculation,
-  SerializedCalculation,
-  defaultCalculation,
-} from "../classes/DemandCalculation"
+import { Island, SerializedIsland, defaultCalculation } from "../classes/Island"
 import { StoredValue } from "../../../common/dom/classes/StoredValue"
 
-const storedCalculations = new StoredValue<SerializedCalculation[]>(
-  "stored-calculations",
-  [defaultCalculation],
-)
+const storedCalculations = new StoredValue<SerializedIsland[]>("stored-calculations", [
+  defaultCalculation,
+])
 
 export class DemandStore implements InitializableStore {
-  @observable public calculations: DemandCalculation[] = [new DemandCalculation()]
-  @observable public selected!: DemandCalculation
+  @observable public islands: Island[] = [new Island()]
+  @observable public selected!: Island
 
   public init() {
     this.load(storedCalculations.restore())
 
     autorun(() => {
-      storedCalculations.save(this.calculations)
+      storedCalculations.save(this.islands)
     })
   }
 
-  public load(data: SerializedCalculation[]) {
-    this.calculations = data.map((c) => new DemandCalculation(c))
-    this.selected = this.calculations[0]
+  public load(data: SerializedIsland[]) {
+    this.islands = data.map((c) => new Island(c))
+    this.selected = this.islands[0]
   }
 
   public clear() {
-    this.calculations = [new DemandCalculation()]
-    this.selected = this.calculations[0]
+    this.islands = [new Island()]
+    this.selected = this.islands[0]
   }
 
   public add() {
-    const calculation = new DemandCalculation()
+    const calculation = new Island()
 
-    this.calculations.push(calculation)
+    this.islands.push(calculation)
     this.selected = calculation
   }
 
-  public remove(calculation: DemandCalculation) {
-    this.calculations = this.calculations.filter((c) => c !== calculation)
-    this.selected = this.calculations[0]
+  public remove(calculation: Island) {
+    this.islands = this.islands.filter((c) => c !== calculation)
+    this.selected = this.islands[0]
   }
 }
 

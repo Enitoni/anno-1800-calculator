@@ -15,7 +15,7 @@ const attemptLoad = async () => {
   return parsedData
 }
 
-export const importCalculations = async (manager: Manager) => {
+export const importIslands = async (manager: Manager) => {
   const { demandStore, modalStore } = manager.stores
 
   try {

@@ -1,4 +1,4 @@
-import { DemandCalculation } from "../../classes/DemandCalculation"
+import { Island } from "../../classes/Island"
 import { useObserver } from "mobx-react-lite"
 import { Table } from "../../../../common/dom/components/Table"
 import React, { useState } from "react"
@@ -10,7 +10,7 @@ import { TextInput } from "../../../../common/input/components/TextInput"
 import { join } from "path"
 
 export type DemandTableProps = {
-  calculation: DemandCalculation
+  calculation: Island
 }
 
 const NameContainer = styled.div`

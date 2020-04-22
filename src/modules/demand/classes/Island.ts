@@ -14,7 +14,7 @@ const buildingsByProduct = Object.fromEntries(
   Object.values(buildings).map((b) => [b.product, b] as const),
 ) as Record<ResourceName, Building>
 
-export type SerializedCalculation = {
+export type SerializedIsland = {
   name: string
   population: Record<ResidenceName, number>
 }
@@ -23,7 +23,7 @@ export type AssociatedResource = Resource & {
   building: Building
 }
 
-export const defaultCalculation: SerializedCalculation = {
+export const defaultCalculation: SerializedIsland = {
   name: "Unnamed Island",
   population: {
     farmers: 0,
@@ -36,7 +36,7 @@ export const defaultCalculation: SerializedCalculation = {
   },
 }
 
-export class DemandCalculation {
+export class Island {
   @observable public name: string
   @observable public population: Record<ResidenceName, number>
 
@@ -111,7 +111,7 @@ export class DemandCalculation {
     })
   }
 
-  public get serialized(): SerializedCalculation {
+  public get serialized(): SerializedIsland {
     return {
       name: this.name,
       population: this.population,
