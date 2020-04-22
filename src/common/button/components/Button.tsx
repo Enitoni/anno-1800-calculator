@@ -23,6 +23,8 @@ const Container = styled.button<ButtonVariants>`
     width: 100%;
   `}
 
+  line-height: 0px;
+
   &:focus {
     outline: none;
   }
