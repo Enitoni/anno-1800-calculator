@@ -13,8 +13,8 @@ export const defaultIslandCollection: SerializedIslandCollection = {
 
 /** Represents a collection of islands */
 export class IslandCollection {
-  @observable public islands: Island[] = [new Island()]
   @observable public name: string
+  @observable public islands: Island[] = [new Island()]
 
   constructor(data = defaultIslandCollection) {
     this.name = data.name
