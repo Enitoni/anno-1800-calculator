@@ -6,7 +6,7 @@ import { getFontColor, getColor } from "../../theming/helpers"
 import { useStores } from "../../../common/state/hooks/useStores"
 
 export type CalculationItemProps = {
-  calculation: Island
+  island: Island
 }
 
 const Container = styled.div<{ active: boolean }>`
@@ -32,16 +32,16 @@ const Container = styled.div<{ active: boolean }>`
   }}
 `
 
-export function CalculationItem(props: CalculationItemProps) {
-  const { demandStore } = useStores()
-  const { calculation } = props
+export function IslandItem(props: CalculationItemProps) {
+  const { islandStore } = useStores()
+  const { island } = props
 
   return useObserver(() => (
     <Container
-      active={demandStore.selected === calculation}
-      onClick={() => (demandStore.selected = calculation)}
+      active={islandStore.selected === island}
+      onClick={() => (islandStore.selected = island)}
     >
-      {calculation.name}
+      {island.name}
     </Container>
   ))
 }

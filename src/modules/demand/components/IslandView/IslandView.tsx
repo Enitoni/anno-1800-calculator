@@ -42,7 +42,7 @@ export function IslandView(props: IslandViewProps) {
   const manager = useManager()
 
   const { island } = props
-  const { demandStore } = manager.stores
+  const { islandStore } = manager.stores
 
   return useObserver(() => (
     <Container>
@@ -54,14 +54,14 @@ export function IslandView(props: IslandViewProps) {
           icon="trashcan"
           label="Delete"
           onClick={() => deleteIsland(manager, island)}
-          disabled={demandStore.islands.length === 1}
+          disabled={islandStore.islands.length === 1}
         />
       </Info>
       <PopulationSection label="Population">
-        <Population calculation={island} />
+        <Population island={island} />
       </PopulationSection>
       <ResultSection label="Result">
-        <DemandTable calculation={island} />
+        <DemandTable island={island} />
       </ResultSection>
     </Container>
   ))

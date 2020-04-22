@@ -23,7 +23,7 @@ export type AssociatedResource = Resource & {
   building: Building
 }
 
-export const defaultCalculation: SerializedIsland = {
+export const defaultIsland: SerializedIsland = {
   name: "Unnamed Island",
   population: {
     farmers: 0,
@@ -40,7 +40,7 @@ export class Island {
   @observable public name: string
   @observable public population: Record<ResidenceName, number>
 
-  constructor(data = defaultCalculation) {
+  constructor(data = defaultIsland) {
     this.name = data.name
     this.population = data.population
   }

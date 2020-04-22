@@ -10,7 +10,7 @@ import { TextInput } from "../../../../common/input/components/TextInput"
 import { join } from "path"
 
 export type DemandTableProps = {
-  calculation: Island
+  island: Island
 }
 
 const NameContainer = styled.div`
@@ -35,11 +35,11 @@ const FilterInput = styled(TextInput)`
 `
 
 export function DemandTable(props: DemandTableProps) {
-  const { calculation } = props
+  const { island } = props
   const [filter, setFilter] = useState("")
 
   return useObserver(() => {
-    const { demand } = calculation
+    const { demand } = island
 
     if (demand.length === 0) {
       return <span>Tweak the population controls above to see results.</span>

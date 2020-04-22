@@ -2,12 +2,12 @@ import { StoreManager } from "./classes/StoreManager"
 import { StoreMapReturn } from "./types/StoreMapReturn"
 
 import { routingStore } from "../routing/stores/routingStore"
-import { demandStore } from "../../modules/demand/stores/demandStore"
+import { islandStore } from "../../modules/demand/stores/islandStore"
 import { modalStore } from "../modal/stores/modalStore"
 
 const stores = {
   routingStore,
-  demandStore,
+  islandStore,
   modalStore,
 }
 

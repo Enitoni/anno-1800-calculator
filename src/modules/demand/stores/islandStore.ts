@@ -1,13 +1,13 @@
 import { InitializableStore } from "../../../common/state/types/InitializableStore"
 import { observable, autorun } from "mobx"
-import { Island, SerializedIsland, defaultCalculation } from "../classes/Island"
+import { Island, SerializedIsland, defaultIsland } from "../classes/Island"
 import { StoredValue } from "../../../common/dom/classes/StoredValue"
 
 const storedCalculations = new StoredValue<SerializedIsland[]>("stored-calculations", [
-  defaultCalculation,
+  defaultIsland,
 ])
 
-export class DemandStore implements InitializableStore {
+export class IslandStore implements InitializableStore {
   @observable public islands: Island[] = [new Island()]
   @observable public selected!: Island
 
@@ -42,4 +42,4 @@ export class DemandStore implements InitializableStore {
   }
 }
 
-export const demandStore = () => new DemandStore()
+export const islandStore = () => new IslandStore()

@@ -5,7 +5,7 @@ import { Section } from "../../core/components/Section"
 import { SIDEBAR_WIDTH } from "../../core/constants"
 import { PrimaryButton } from "../../../common/button/components/PrimaryButton"
 import { useObserver } from "mobx-react-lite"
-import { CalculationItem } from "./CalculationItem"
+import { IslandItem } from "./IslandItem"
 import { ButtonList } from "../../../common/button/components/ButtonList"
 import { useManager } from "../../../common/state/hooks/useManager"
 import { importIslands } from "../actions/importIslands"
@@ -35,10 +35,10 @@ const SelectedCalculation = styled.div`
 
 export function DemandPage() {
   const manager = useManager()
-  const { demandStore } = manager.stores
+  const { islandStore } = manager.stores
 
   const renderSelected = () => {
-    const { selected } = demandStore
+    const { selected } = islandStore
     if (!selected) return
 
     return <IslandView island={selected} />
@@ -52,7 +52,7 @@ export function DemandPage() {
             icon="save"
             label="Export"
             onClick={() =>
-              saveToFile("calculations.json", JSON.stringify(demandStore.islands))
+              saveToFile("calculations.json", JSON.stringify(islandStore.islands))
             }
           />
           <PrimaryButton
@@ -71,13 +71,13 @@ export function DemandPage() {
         <Sidebar>
           <Section label="Your islands">
             <CalculationList>
-              {demandStore.islands.map((c, i) => (
-                <CalculationItem key={c.name + i} calculation={c} />
+              {islandStore.islands.map((c, i) => (
+                <IslandItem key={c.name + i} island={c} />
               ))}
             </CalculationList>
             <PrimaryButton
               stretch
-              onClick={() => demandStore.add()}
+              onClick={() => islandStore.add()}
               label="Add Island"
               icon="circledPlus"
             />

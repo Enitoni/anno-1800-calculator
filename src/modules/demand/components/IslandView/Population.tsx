@@ -11,7 +11,7 @@ import { slugify } from "../../../../common/lang/string/slugify"
 import { join } from "path"
 
 export type CalculationPopulationProps = {
-  calculation: Island
+  island: Island
 }
 
 const Container = styled.div`
@@ -46,10 +46,10 @@ const Avatar = styled.img`
 `
 
 export function Population(props: CalculationPopulationProps) {
-  const { calculation } = props
+  const { island } = props
 
   const renderController = (name: ResidenceName) => {
-    const { population } = calculation
+    const { population } = island
     const residence = residences[name]
 
     return (
@@ -75,9 +75,7 @@ export function Population(props: CalculationPopulationProps) {
 
   return useObserver(() => (
     <Container>
-      {Object.keys(calculation.population).map((x) =>
-        renderController(x as ResidenceName),
-      )}
+      {Object.keys(island.population).map((x) => renderController(x as ResidenceName))}
     </Container>
   ))
 }
