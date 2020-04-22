@@ -1,44 +1,54 @@
 import { InitializableStore } from "../../../common/state/types/InitializableStore"
-import { observable, autorun } from "mobx"
-import { Island, SerializedIsland, defaultIsland } from "../classes/Island"
+import { observable, autorun, computed } from "mobx"
+import { Island } from "../classes/Island"
 import { StoredValue } from "../../../common/dom/classes/StoredValue"
+import {
+  IslandCollection,
+  SerializedIslandCollection,
+  defaultIslandCollection,
+} from "../classes/IslandCollection"
 
-const storedCalculations = new StoredValue<SerializedIsland[]>("stored-calculations", [
-  defaultIsland,
+const storedCollections = new StoredValue<SerializedIslandCollection[]>("collections", [
+  defaultIslandCollection,
 ])
 
 export class IslandStore implements InitializableStore {
-  @observable public islands: Island[] = [new Island()]
+  @observable public collections: IslandCollection[] = [new IslandCollection()]
   @observable public selected!: Island
 
   public init() {
-    this.load(storedCalculations.restore())
+    this.load(storedCollections.restore())
 
-    autorun(() => {
+    /*autorun(() => {
       storedCalculations.save(this.islands)
-    })
+    })*/
   }
 
-  public load(data: SerializedIsland[]) {
-    this.islands = data.map((c) => new Island(c))
+  public load(data: SerializedIslandCollection[]) {
+    this.collections = data.map((c) => new IslandCollection(c))
     this.selected = this.islands[0]
   }
 
   public clear() {
-    this.islands = [new Island()]
+    this.collections = [new IslandCollection()]
     this.selected = this.islands[0]
   }
 
   public add() {
-    const calculation = new Island()
+    const collection = new IslandCollection()
+    const island = collection.islands[0]
 
-    this.islands.push(calculation)
-    this.selected = calculation
+    this.collections.push(collection)
+    this.selected = island
   }
 
-  public remove(calculation: Island) {
-    this.islands = this.islands.filter((c) => c !== calculation)
-    this.selected = this.islands[0]
+  public getCollectionByIsland(island: Island) {
+    return this.collections.find((c) => c.islands.some((i) => i === island))
+  }
+
+  @computed
+  public get islands() {
+    return this.collections.flatMap((c) => c.islands)
   }
 }
 

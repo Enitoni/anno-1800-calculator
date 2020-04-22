@@ -78,7 +78,7 @@ export function DemandPage() {
             <PrimaryButton
               stretch
               onClick={() => islandStore.add()}
-              label="Add Island"
+              label="New collection"
               icon="circledPlus"
             />
           </Section>
