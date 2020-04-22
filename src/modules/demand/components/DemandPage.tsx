@@ -24,7 +24,7 @@ const Sidebar = styled.div`
 `
 
 const CalculationList = styled.div`
-  margin-top: -8px;
+  margin-top: -16px;
   margin-bottom: 8px;
 `
 
