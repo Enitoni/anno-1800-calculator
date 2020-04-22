@@ -111,6 +111,11 @@ export class Island {
     })
   }
 
+  @computed
+  public get displayName() {
+    return this.name || "Island"
+  }
+
   public get serialized(): SerializedIsland {
     return {
       name: this.name,

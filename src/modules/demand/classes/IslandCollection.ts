@@ -1,4 +1,4 @@
-import { observable } from "mobx"
+import { observable, computed } from "mobx"
 import { Island, SerializedIsland, defaultIsland } from "./Island"
 
 export type SerializedIslandCollection = {
@@ -30,5 +30,10 @@ export class IslandCollection {
 
   public remove(island: Island) {
     this.islands = this.islands.filter((i) => i !== island)
+  }
+
+  @computed
+  public get displayName() {
+    return this.name || "Collection"
   }
 }

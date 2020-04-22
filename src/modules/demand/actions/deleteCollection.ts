@@ -9,7 +9,7 @@ export const deleteCollection = (manager: Manager, collection: IslandCollection)
     key: "delete-collection",
     render: renderConfirmationModal(
       "Delete collection?",
-      `Are you sure you want to delete "${collection.name}"?`,
+      `Are you sure you want to delete "${collection.displayName}"?`,
       () => islandStore.remove(collection),
     ),
   })

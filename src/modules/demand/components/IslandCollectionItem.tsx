@@ -43,7 +43,7 @@ export function IslandCollectionItem(props: IslandCollectionItemProps) {
   return useObserver(() => (
     <Container>
       <Header>
-        <Label>{collection.name || "Unnamed collection"}</Label>
+        <Label>{collection.displayName}</Label>
         <Actions horizontal>
           <IconButton
             icon="circledPlus"

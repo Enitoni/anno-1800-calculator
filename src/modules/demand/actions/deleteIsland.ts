@@ -10,7 +10,7 @@ export const deleteIsland = (manager: Manager, island: Island) => {
     key: "delete-island",
     render: renderConfirmationModal(
       "Delete island?",
-      `Are you sure you want to delete "${island.name}"?`,
+      `Are you sure you want to delete "${island.displayName}"?`,
       () => collection.remove(island),
     ),
   })

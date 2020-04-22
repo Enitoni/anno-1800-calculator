@@ -57,7 +57,7 @@ export function IslandItem(props: CalculationItemProps) {
         active={islandStore.selected === island}
         onClick={() => (islandStore.selected = island)}
       >
-        {island.name || "Unnamed island"}
+        {island.displayName}
       </Name>
       <IconButton
         icon="trashcan"
