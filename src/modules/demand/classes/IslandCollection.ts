@@ -36,4 +36,9 @@ export class IslandCollection {
   public get displayName() {
     return this.name || "Collection"
   }
+
+  @computed
+  public get totalPopulation() {
+    return this.islands.reduce((acc, c) => c.totalPopulation + acc, 0)
+  }
 }

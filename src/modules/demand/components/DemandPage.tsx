@@ -13,6 +13,7 @@ import { SecondaryButton } from "../../../common/button/components/SecondaryButt
 import { clearAllIslands } from "../actions/clearAllIslands"
 import { IslandView } from "./IslandView/IslandView"
 import { IslandCollectionItem } from "./IslandCollectionItem"
+import { DemandStatistics } from "./DemandStatistics"
 
 const Container = styled.div`
   display: flex;
@@ -31,6 +32,10 @@ const CalculationList = styled.div`
 const SelectedCalculation = styled.div`
   margin-left: 64px;
   flex: 1;
+`
+
+const IslandSection = styled(Section)`
+  margin-bottom: 32px;
 `
 
 export function DemandPage() {
@@ -69,7 +74,7 @@ export function DemandPage() {
       </PageTitle>
       <Container>
         <Sidebar>
-          <Section label="Your islands">
+          <IslandSection label="Your islands">
             <CalculationList>
               {islandStore.collections.map((c, i) => (
                 <IslandCollectionItem key={c.name + i} collection={c} />
@@ -81,6 +86,9 @@ export function DemandPage() {
               label="New collection"
               icon="circledPlus"
             />
+          </IslandSection>
+          <Section label="Statistics">
+            <DemandStatistics />
           </Section>
         </Sidebar>
         <SelectedCalculation>{renderSelected()}</SelectedCalculation>

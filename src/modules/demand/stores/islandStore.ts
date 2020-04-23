@@ -60,6 +60,11 @@ export class IslandStore implements InitializableStore {
   public get islands() {
     return this.collections.flatMap((c) => c.islands)
   }
+
+  @computed
+  public get totalPopulation() {
+    return this.collections.reduce((acc, c) => c.totalPopulation + acc, 0)
+  }
 }
 
 export const islandStore = () => new IslandStore()

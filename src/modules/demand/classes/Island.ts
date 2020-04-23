@@ -116,6 +116,11 @@ export class Island {
     return this.name || "Island"
   }
 
+  @computed
+  public get totalPopulation() {
+    return Object.values(this.population).reduce((acc, c) => acc + c)
+  }
+
   public get serialized(): SerializedIsland {
     return {
       name: this.name,
