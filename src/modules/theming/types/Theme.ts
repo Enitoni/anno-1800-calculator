@@ -11,6 +11,7 @@ export type Theme = {
   }
   transparencies: {
     lightPositive: string
+    strongPositive: string
     lightNegative: string
     strongNegative: string
   }

@@ -13,6 +13,7 @@ export const darkTheme: Theme = {
   },
   transparencies: {
     lightPositive: "rgba(255, 255, 255, 0.1)",
+    strongPositive: "rgba(255, 255, 255, 0.4)",
     lightNegative: "rgba(0, 0, 0, 0.3)",
     strongNegative: "rgba(0, 0, 0, 0.6)",
   },
