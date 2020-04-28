@@ -1,5 +1,8 @@
 import { observable, computed } from "mobx"
 import { Island, SerializedIsland, defaultIsland } from "./Island"
+import { sumPopulation } from "../helpers/sumPopulation"
+import { getNeedEntries } from "../helpers/getNeedEntries"
+import { calculateDemands } from "../helpers/calculateDemands"
 
 export type SerializedIslandCollection = {
   name: string
@@ -38,7 +41,18 @@ export class IslandCollection {
   }
 
   @computed
+  public get population() {
+    return sumPopulation(this.islands.flatMap((i) => i.population))
+  }
+
+  @computed
   public get totalPopulation() {
     return this.islands.reduce((acc, c) => c.totalPopulation + acc, 0)
+  }
+
+  @computed
+  public get demand() {
+    const needs = getNeedEntries(this.population)
+    return calculateDemands(needs)
   }
 }

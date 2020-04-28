@@ -2,7 +2,7 @@ import { IconType } from "../types/IconType"
 import * as icons from "../icons"
 import React from "react"
 
-export interface SVGIconProps {
+export type SVGIconProps = {
   className?: string
   name: IconType
 }

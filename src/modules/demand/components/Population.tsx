@@ -41,9 +41,11 @@ const ControllerHeader = styled.div`
   margin-bottom: 8px;
 `
 
-const Amount = styled.span`
+const Amount = styled.div`
   font-weight: 700;
   font-size: 1em;
+
+  margin-top: 16px;
 `
 
 const Avatar = styled.img`

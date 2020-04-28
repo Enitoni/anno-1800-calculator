@@ -1,16 +1,16 @@
-import { Island } from "../../classes/Island"
 import { useObserver } from "mobx-react-lite"
-import { Table } from "../../../../common/dom/components/Table"
+import { Table } from "../../../common/dom/components/Table"
 import React, { useState } from "react"
-import styled from "../../../theming/custom"
+import styled from "../../theming/custom"
 import { size } from "polished"
-import { slugify } from "../../../../common/lang/string/slugify"
-import { getTransparency } from "../../../theming/helpers"
-import { TextInput } from "../../../../common/input/components/TextInput"
+import { slugify } from "../../../common/lang/string/slugify"
+import { getTransparency } from "../../theming/helpers"
+import { TextInput } from "../../../common/input/components/TextInput"
 import { join } from "path"
+import { Demand } from "../helpers/calculateDemands"
 
 export type DemandTableProps = {
-  island: Island
+  demands: Demand[]
 }
 
 const NameContainer = styled.div`
@@ -30,24 +30,22 @@ const Name = styled.span`
 `
 
 const FilterInput = styled(TextInput)`
-  margin-bottom: 8px;
+  margin-bottom: 14px;
   width: 100%;
 `
 
 export function DemandTable(props: DemandTableProps) {
-  const { island } = props
+  const { demands } = props
   const [filter, setFilter] = useState("")
 
   return useObserver(() => {
-    const { demand } = island
-
-    if (demand.length === 0) {
-      return <span>Tweak the population controls above to see results.</span>
+    if (demands.length === 0) {
+      return <span>Tweak the population controls to see results.</span>
     }
 
     const filtered = filter
-      ? demand.filter((d) => d.name.toLowerCase().includes(filter.toLowerCase()))
-      : demand
+      ? demands.filter((d) => d.name.toLowerCase().includes(filter.toLowerCase()))
+      : demands
 
     return (
       <>
@@ -84,7 +82,7 @@ export function DemandTable(props: DemandTableProps) {
                   {demand.consumption.toFixed(4).replace(/\.?0+$/, "")}
                 </Table.Data>
                 <Table.Data>{demand.requiredChains}x</Table.Data>
-                <Table.Data>{demand.chainEffiency.toFixed(2)}%</Table.Data>
+                <Table.Data>{demand.chainEfficiency.toFixed(2)}%</Table.Data>
                 <Table.Data>
                   {demand.productionPerChain.toFixed(4).replace(/\.?0+$/, "")}
                 </Table.Data>

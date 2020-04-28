@@ -7,6 +7,9 @@ import {
   SerializedIslandCollection,
   defaultIslandCollection,
 } from "../classes/IslandCollection"
+import { sumPopulation } from "../helpers/sumPopulation"
+import { getNeedEntries } from "../helpers/getNeedEntries"
+import { calculateDemands } from "../helpers/calculateDemands"
 
 const storedCollections = new StoredValue<SerializedIslandCollection[]>("collections", [
   defaultIslandCollection,
@@ -62,8 +65,19 @@ export class IslandStore implements InitializableStore {
   }
 
   @computed
+  public get population() {
+    return sumPopulation(this.collections.flatMap((c) => c.population))
+  }
+
+  @computed
   public get totalPopulation() {
     return this.collections.reduce((acc, c) => c.totalPopulation + acc, 0)
+  }
+
+  @computed
+  public get demand() {
+    const needs = getNeedEntries(this.population)
+    return calculateDemands(needs)
   }
 }
 

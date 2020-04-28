@@ -5,9 +5,9 @@ import React from "react"
 import { getFontColor } from "../../theming/helpers"
 
 const Row = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: flex
+  flex-direction: column;
+  align-items: flex-end;
 `
 
 const Label = styled.span`
@@ -19,6 +19,7 @@ const Label = styled.span`
 
 const Value = styled.span`
   font-weight: 700;
+  margin-top: 8px;
 `
 
 export function DemandStatistics() {
