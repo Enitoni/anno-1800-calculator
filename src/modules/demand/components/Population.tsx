@@ -1,17 +1,18 @@
-import { Island } from "../../classes/Island"
-import styled from "../../../theming/custom"
+import { Island } from "../classes/Island"
+import styled from "../../theming/custom"
 import React from "react"
-import { ResidenceName } from "../../types/ResidenceName"
-import * as residences from "../../residences"
-import { NumberInput } from "../../../../common/input/components/NumberInput"
+import { ResidenceName } from "../types/ResidenceName"
+import * as residences from "../residences"
+import { NumberInput } from "../../../common/input/components/NumberInput"
 import { useObserver } from "mobx-react-lite"
-import { getColor } from "../../../theming/helpers"
+import { getColor } from "../../theming/helpers"
 import { size } from "polished"
-import { slugify } from "../../../../common/lang/string/slugify"
+import { slugify } from "../../../common/lang/string/slugify"
 import { join } from "path"
 
-export type CalculationPopulationProps = {
-  island: Island
+export type PopulationProps = {
+  population: Record<ResidenceName, number>
+  editable?: boolean
 }
 
 const Container = styled.div`
@@ -40,16 +41,37 @@ const ControllerHeader = styled.div`
   margin-bottom: 8px;
 `
 
+const Amount = styled.span`
+  font-weight: 700;
+  font-size: 1em;
+`
+
 const Avatar = styled.img`
   ${size(24)};
   border-radius: 100%;
 `
 
-export function Population(props: CalculationPopulationProps) {
-  const { island } = props
+export function Population(props: PopulationProps) {
+  const { population, editable } = props
+
+  const renderAmount = (name: ResidenceName) => {
+    const amount = population[name]
+
+    if (!editable) {
+      return <Amount>{amount}</Amount>
+    }
+
+    return (
+      <NumberInput
+        controls={false}
+        value={population[name]}
+        min={0}
+        onInput={(n) => (population[name] = n)}
+      />
+    )
+  }
 
   const renderController = (name: ResidenceName) => {
-    const { population } = island
     const residence = residences[name]
 
     return (
@@ -63,19 +85,14 @@ export function Population(props: CalculationPopulationProps) {
           />
           <ControllerLabel>{residence.name}</ControllerLabel>
         </ControllerHeader>
-        <NumberInput
-          controls={false}
-          value={population[name]}
-          min={0}
-          onInput={(n) => (population[name] = n)}
-        />
+        {renderAmount(name)}
       </Controller>
     )
   }
 
   return useObserver(() => (
     <Container>
-      {Object.keys(island.population).map((x) => renderController(x as ResidenceName))}
+      {Object.keys(population).map((x) => renderController(x as ResidenceName))}
     </Container>
   ))
 }
