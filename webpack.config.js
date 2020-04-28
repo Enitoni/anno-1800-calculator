@@ -93,7 +93,7 @@ const prodConfig = {
     nodeEnv: "production",
   },
   output: {
-    publicPath: "/anno-calculator",
+    publicPath: "/anno-1800-calculator",
   },
 }
 
