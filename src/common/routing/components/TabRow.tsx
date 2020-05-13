@@ -6,7 +6,7 @@ import { getTransparency, getColor } from "../../../modules/theming/helpers"
 const ItemContainer = styled.div<{ active: boolean }>`
   position: relative;
 
-  font-size: 1.1em;
+  font-size: 1em;
   font-weight: 700;
 
   padding-bottom: 12px;
