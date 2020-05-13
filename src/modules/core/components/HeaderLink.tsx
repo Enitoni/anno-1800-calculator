@@ -37,7 +37,7 @@ const Container = styled.a<{ active: boolean }>`
   display: flex;
   align-items: center;
 
-  margin-left: 24px;
+  margin-left: 32px;
 
   ${(props) => {
     if (!props.active) {
