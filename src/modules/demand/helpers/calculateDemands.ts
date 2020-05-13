@@ -1,4 +1,4 @@
-import { AssociatedResource } from "../types/Resource"
+import { AssociatedResource } from "../../game/types/Resource"
 import { ResidenceNeedEntry } from "./getNeedEntries"
 
 export type Demand = AssociatedResource & {

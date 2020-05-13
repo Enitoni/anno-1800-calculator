@@ -1,4 +1,4 @@
-import { ResidenceName } from "../types/ResidenceName"
+import { ResidenceName } from "../../game/types/ResidenceName"
 
 export const sumPopulation = (populations: Record<ResidenceName, number>[]) => {
   const [first, ...rest] = populations

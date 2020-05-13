@@ -1,12 +1,12 @@
-import { ResidenceName } from "../types/ResidenceName"
-import { ResourceName } from "../types/ResourceName"
-import { AssociatedResource } from "../types/Resource"
-import { Residence } from "../types/Residence"
+import { ResidenceName } from "../../game/types/ResidenceName"
+import { ResourceName } from "../../game/types/ResourceName"
+import { AssociatedResource } from "../../game/types/Resource"
+import { Residence } from "../../game/types/Residence"
 
-import * as residences from "../residences"
-import * as resources from "../resources"
-import * as buildings from "../buildings"
-import { Building } from "../types/Building"
+import * as residences from "../../game/residences"
+import * as resources from "../../game/resources"
+import * as buildings from "../../game/buildings"
+import { Building } from "../../game/types/Building"
 
 export type ResidenceNeedEntry = {
   population: number
