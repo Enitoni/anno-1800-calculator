@@ -45,7 +45,8 @@ export function Header() {
         <Title>Anno 1800 calculator</Title>
         <Nav>
           <HeaderLink icon="home" to="/" label="Home" />
-          <HeaderLink icon="box" to="/demands" label="Demands" />
+          <HeaderLink icon="box" to="/demands" label="Resident Demands" />
+          <HeaderLink icon="link" to="/chains" label="Production Chains" />
         </Nav>
       </Content>
     </Container>
