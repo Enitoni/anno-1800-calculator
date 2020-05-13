@@ -15,6 +15,7 @@ const Container = styled.div`
   align-items: center;
 
   margin-bottom: 32px;
+  height: 40px;
 `
 
 const Title = styled.h2`
