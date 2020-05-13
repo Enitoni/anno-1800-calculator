@@ -16,6 +16,7 @@ const Container = styled.header`
   top: 0px;
   left: 0px;
   right: 0px;
+  z-index: 10;
 
   padding: 0px 16px;
 `
