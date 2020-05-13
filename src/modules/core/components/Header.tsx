@@ -43,7 +43,7 @@ export function Header() {
   return (
     <Container>
       <Content>
-        <Title>Anno 1800 calculator</Title>
+        <Title>Anno 1800 Calculator</Title>
         <Nav>
           <HeaderLink icon="home" to="/" label="Home" />
           <HeaderLink icon="box" to="/demands" label="Resident Demands" />
