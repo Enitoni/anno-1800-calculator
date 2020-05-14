@@ -3,7 +3,7 @@ import styled from "../../theming/custom"
 import { HEADER_HEIGHT, CONTENT_WIDTH } from "../constants"
 import { Route, useRouter } from "../../../common/routing/hooks/useRouter"
 import { DemandPage } from "../../demand/components/DemandPage"
-import { ChainPage } from "../../chain/ChainPage"
+import { ChainPage } from "../../chain/components/ChainPage"
 
 const Container = styled.div`
   margin-top: ${HEADER_HEIGHT}px;
