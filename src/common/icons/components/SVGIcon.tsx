@@ -18,3 +18,5 @@ export function SVGIcon(props: SVGIconProps) {
     height: "100%",
   })
 }
+
+export type SVGIconWithProps<T extends object> = (props: SVGIconProps & T) => JSX.Element
