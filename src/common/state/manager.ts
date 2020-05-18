@@ -4,10 +4,12 @@ import { StoreMapReturn } from "./types/StoreMapReturn"
 import { routingStore } from "../routing/stores/routingStore"
 import { islandStore } from "../../modules/demand/stores/islandStore"
 import { modalStore } from "../modal/stores/modalStore"
+import { chainStore } from "../../modules/chain/stores/chainStore"
 
 const stores = {
   routingStore,
   islandStore,
+  chainStore,
   modalStore,
 }
 
