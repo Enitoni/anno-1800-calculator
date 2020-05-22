@@ -10,6 +10,7 @@ export type Building = {
   name: string
   processingTime: number
   product: ResourceName
+  ingredients?: ResourceName[]
   costs: BuildingCost[]
   staff: {
     residence: ResidenceName
