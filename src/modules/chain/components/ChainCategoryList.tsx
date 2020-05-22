@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useLayoutEffect } from "react"
 import { BuildingCategoryItem } from "./BuildingCategoryItem"
 import { categories } from "../categories"
 import { selectedCategoryContext } from "../contexts/selectedCategoryContext"
@@ -18,7 +18,7 @@ export function ChainCategoryList() {
     categories.find((c) => c.buildings.some((b) => b === chainStore.selected)),
   )!
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setCategory(activeCategory)
   }, [activeCategory])
 
