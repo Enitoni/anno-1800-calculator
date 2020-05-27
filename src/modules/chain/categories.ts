@@ -14,7 +14,7 @@ export type BuildingCategoryReference = {
 export const categories: ChainCategory[] = ([
   {
     residence: "farmers",
-    buildings: ["sawmill", "schnappsDistillery", "frameworkKnitters"],
+    buildings: ["oldSawmill", "schnappsDistillery", "frameworkKnitters"],
   },
   {
     residence: "workers",
