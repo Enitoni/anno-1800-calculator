@@ -5,7 +5,7 @@ export const oldSawmill: Building = {
   product: "timber",
   processingTime: 15,
   costs: [],
-  ingredients: ["wood"],
+  children: ["oldLumberjackHut"],
   staff: { residence: "farmers", amount: 10 },
   price: { construction: 100, maintenance: 10 },
 }
@@ -33,7 +33,7 @@ export const schnappsDistillery: Building = {
   product: "schnapps",
   processingTime: 30,
   costs: [{ resource: "timber", amount: 2 }],
-  ingredients: ["potatoes"],
+  children: ["potatoFarm"],
   staff: { residence: "farmers", amount: 50 },
   price: { construction: 100, maintenance: 40 },
 }
@@ -52,7 +52,7 @@ export const frameworkKnitters: Building = {
   product: "workClothes",
   processingTime: 30,
   costs: [{ resource: "timber", amount: 2 }],
-  ingredients: ["wool"],
+  children: ["sheepFarm"],
   staff: { residence: "farmers", amount: 50 },
   price: { construction: 100, maintenance: 50 },
 }
@@ -80,7 +80,7 @@ export const oldBrickFactory: Building = {
   product: "bricks",
   processingTime: 60,
   costs: [{ resource: "timber", amount: 8 }],
-  ingredients: ["clay"],
+  children: ["clayPit"],
   staff: { residence: "workers", amount: 25 },
   price: { construction: 500, maintenance: 20 },
 }
@@ -102,7 +102,7 @@ export const slaughterhouse: Building = {
     { resource: "timber", amount: 4 },
     { resource: "bricks", amount: 5 },
   ],
-  ingredients: ["pigs"],
+  children: ["pigFarm"],
   staff: { residence: "workers", amount: 50 },
   price: { construction: 500, maintenance: 80 },
 }
@@ -115,7 +115,7 @@ export const oldSailmakers: Building = {
     { resource: "timber", amount: 8 },
     { resource: "bricks", amount: 10 },
   ],
-  ingredients: ["wool"],
+  children: ["sheepFarm"],
   staff: { residence: "workers", amount: 50 },
   price: { construction: 500, maintenance: 75 },
 }
@@ -137,7 +137,7 @@ export const flourMill: Building = {
     { resource: "timber", amount: 4 },
     { resource: "bricks", amount: 5 },
   ],
-  ingredients: ["grain"],
+  children: ["grainFarm"],
   staff: { residence: "farmers", amount: 10 },
   price: { construction: 500, maintenance: 50 },
 }
@@ -150,7 +150,7 @@ export const bakery: Building = {
     { resource: "timber", amount: 4 },
     { resource: "bricks", amount: 5 },
   ],
-  ingredients: ["flour"],
+  children: ["flourMill"],
   staff: { residence: "workers", amount: 50 },
   price: { construction: 500, maintenance: 60 },
 }
@@ -164,7 +164,7 @@ export const renderingWorks: Building = {
     { resource: "bricks", amount: 5 },
     { resource: "steelBeams", amount: 4 },
   ],
-  ingredients: ["pigs"],
+  children: ["pigFarm"],
   staff: { residence: "workers", amount: 40 },
   price: { construction: 500, maintenance: 40 },
 }
@@ -178,7 +178,7 @@ export const soapFactory: Building = {
     { resource: "bricks", amount: 5 },
     { resource: "steelBeams", amount: 4 },
   ],
-  ingredients: ["tallow"],
+  children: ["renderingWorks"],
   staff: { residence: "workers", amount: 50 },
   price: { construction: 500, maintenance: 50 },
 }
@@ -215,7 +215,7 @@ export const furnace: Building = {
     { resource: "timber", amount: 4 },
     { resource: "bricks", amount: 5 },
   ],
-  ingredients: ["iron", "coal"],
+  children: ["ironMine", "charcoalKiln"],
   staff: { residence: "workers", amount: 100 },
   price: { construction: 500, maintenance: 20 },
 }
@@ -228,7 +228,7 @@ export const steelworks: Building = {
     { resource: "timber", amount: 8 },
     { resource: "bricks", amount: 10 },
   ],
-  ingredients: ["steel"],
+  children: ["furnace"],
   staff: { residence: "workers", amount: 200 },
   price: { construction: 500, maintenance: 100 },
 }
@@ -242,7 +242,7 @@ export const weaponFactory: Building = {
     { resource: "bricks", amount: 10 },
     { resource: "steelBeams", amount: 8 },
   ],
-  ingredients: ["steel"],
+  children: ["furnace"],
   staff: { residence: "workers", amount: 50 },
   price: { construction: 500, maintenance: 120 },
 }
@@ -256,7 +256,7 @@ export const malthouse: Building = {
     { resource: "bricks", amount: 5 },
     { resource: "steelBeams", amount: 4 },
   ],
-  ingredients: ["grain"],
+  children: ["grainFarm"],
   staff: { residence: "workers", amount: 25 },
   price: { construction: 500, maintenance: 150 },
 }
@@ -279,7 +279,7 @@ export const brewery: Building = {
     { resource: "bricks", amount: 5 },
     { resource: "steelBeams", amount: 4 },
   ],
-  ingredients: ["hops", "malt"],
+  children: ["hopFarm", "malthouse"],
   staff: { residence: "workers", amount: 75 },
   price: { construction: 500, maintenance: 200 },
 }
@@ -305,7 +305,7 @@ export const glassmakers: Building = {
     { resource: "bricks", amount: 10 },
     { resource: "steelBeams", amount: 8 },
   ],
-  ingredients: ["quartzSand"],
+  children: ["sandMine"],
   staff: { residence: "artisans", amount: 100 },
   price: { construction: 2000, maintenance: 100 },
 }
@@ -319,7 +319,7 @@ export const windowMakers: Building = {
     { resource: "bricks", amount: 20 },
     { resource: "steelBeams", amount: 16 },
   ],
-  ingredients: ["wood", "glass"],
+  children: ["lumberjackHut", "glassmakers"],
   staff: { residence: "artisans", amount: 100 },
   price: { construction: 2000, maintenance: 100 },
 }
@@ -361,7 +361,7 @@ export const artisanalKitchen: Building = {
     { resource: "steelBeams", amount: 8 },
     { resource: "windows", amount: 8 },
   ],
-  ingredients: ["beef", "redPeppers"],
+  children: ["cattleFarm", "redPepperFarm"],
   staff: { residence: "artisans", amount: 75 },
   price: { construction: 2000, maintenance: 100 },
 }
@@ -376,7 +376,7 @@ export const cannery: Building = {
     { resource: "steelBeams", amount: 8 },
     { resource: "windows", amount: 8 },
   ],
-  ingredients: ["iron", "goulash"],
+  children: ["ironMine", "artisanalKitchen"],
   staff: { residence: "artisans", amount: 75 },
   price: { construction: 2000, maintenance: 100 },
 }
@@ -403,7 +403,7 @@ export const sewingMachineFactory: Building = {
     { resource: "steelBeams", amount: 8 },
     { resource: "windows", amount: 8 },
   ],
-  ingredients: ["wood", "steel"],
+  children: ["lumberjackHut", "furnace"],
   staff: { residence: "artisans", amount: 150 },
   price: { construction: 500, maintenance: 500 },
 }
@@ -422,7 +422,7 @@ export const rumDistillery: Building = {
   product: "rum",
   processingTime: 30,
   costs: [{ resource: "timber", amount: 6 }],
-  ingredients: ["wood", "sugarCane"],
+  children: ["lumberjackHut", "sugarCanePlantation"],
   staff: { residence: "jornaleros", amount: 50 },
   price: { construction: 500, maintenance: 30 },
 }
@@ -446,7 +446,7 @@ export const furDealer: Building = {
     { resource: "steelBeams", amount: 8 },
     { resource: "windows", amount: 5 },
   ],
-  ingredients: ["furs", "cottonFabric"],
+  children: ["huntingCabin", "cottonMill"],
   staff: { residence: "artisans", amount: 200 },
   price: { construction: 2000, maintenance: 500 },
 }
@@ -475,7 +475,7 @@ export const concreteFactory: Building = {
     { resource: "steelBeams", amount: 24 },
     { resource: "windows", amount: 25 },
   ],
-  ingredients: ["steel", "cement"],
+  children: ["furnace", "limestoneQuarry"],
   staff: { residence: "engineers", amount: 125 },
   price: { construction: 10000, maintenance: 500 },
 }
@@ -583,7 +583,7 @@ export const brassSmeltery: Building = {
     { resource: "windows", amount: 10 },
     { resource: "reinforcedConcrete", amount: 10 },
   ],
-  ingredients: ["zinc", "copper"],
+  children: ["zincMine", "copperMine"],
   staff: { residence: "workers", amount: 25 },
   price: { construction: 5000, maintenance: 250 },
 }
@@ -599,7 +599,7 @@ export const spectacleFactory: Building = {
     { resource: "windows", amount: 10 },
     { resource: "reinforcedConcrete", amount: 10 },
   ],
-  ingredients: ["glass", "brass"],
+  children: ["glassmakers", "brassSmeltery"],
   staff: { residence: "engineers", amount: 100 },
   price: { construction: 5000, maintenance: 1000 },
 }
@@ -615,7 +615,7 @@ export const motorAssemblyLine: Building = {
     { resource: "windows", amount: 20 },
     { resource: "reinforcedConcrete", amount: 20 },
   ],
-  ingredients: ["steel", "brass"],
+  children: ["furnace", "brassSmeltery"],
   staff: { residence: "engineers", amount: 250 },
   price: { construction: 10000, maintenance: 5500 },
 }
@@ -631,7 +631,7 @@ export const bicycleFactory: Building = {
     { resource: "windows", amount: 10 },
     { resource: "reinforcedConcrete", amount: 10 },
   ],
-  ingredients: ["steel", "caoutchouc"],
+  children: ["furnace", "caoutchoucPlantation"],
   staff: { residence: "engineers", amount: 150 },
   price: { construction: 5000, maintenance: 1625 },
 }
@@ -662,7 +662,7 @@ export const goldsmiths: Building = {
     { resource: "windows", amount: 10 },
     { resource: "reinforcedConcrete", amount: 10 },
   ],
-  ingredients: ["goldOre", "coal"],
+  children: ["goldMine", "charcoalKiln"],
   staff: { residence: "engineers", amount: 125 },
   price: { construction: 5000, maintenance: 750 },
 }
@@ -678,7 +678,7 @@ export const clockmakers: Building = {
     { resource: "windows", amount: 10 },
     { resource: "reinforcedConcrete", amount: 10 },
   ],
-  ingredients: ["gold", "glass"],
+  children: ["goldsmiths", "glassmakers"],
   staff: { residence: "engineers", amount: 150 },
   price: { construction: 10000, maintenance: 1700 },
 }
@@ -694,7 +694,7 @@ export const filamentFactory: Building = {
     { resource: "windows", amount: 10 },
     { resource: "reinforcedConcrete", amount: 10 },
   ],
-  ingredients: ["coal"],
+  children: ["charcoalKiln"],
   staff: { residence: "engineers", amount: 150 },
   price: { construction: 5000, maintenance: 750 },
 }
@@ -710,7 +710,7 @@ export const lightBulbFactory: Building = {
     { resource: "windows", amount: 10 },
     { resource: "reinforcedConcrete", amount: 10 },
   ],
-  ingredients: ["filament", "glass"],
+  children: ["filamentFactory", "glassmakers"],
   staff: { residence: "engineers", amount: 150 },
   price: { construction: 10000, maintenance: 1250 },
 }
@@ -739,7 +739,7 @@ export const dynamiteFactory: Building = {
     { resource: "windows", amount: 15 },
     { resource: "reinforcedConcrete", amount: 15 },
   ],
-  ingredients: ["tallow", "saltpeter"],
+  children: ["renderingWorks", "saltpeterWorks"],
   staff: { residence: "engineers", amount: 250 },
   price: { construction: 10000, maintenance: 1000 },
 }
@@ -755,7 +755,7 @@ export const heavyWeaponsFactory: Building = {
     { resource: "windows", amount: 30 },
     { resource: "reinforcedConcrete", amount: 30 },
   ],
-  ingredients: ["dynamite", "steel"],
+  children: ["dynamiteFactory", "furnace"],
   staff: { residence: "engineers", amount: 250 },
   price: { construction: 25000, maintenance: 5000 },
 }
@@ -780,7 +780,7 @@ export const champagneCellar: Building = {
     { resource: "windows", amount: 15 },
     { resource: "reinforcedConcrete", amount: 15 },
   ],
-  ingredients: ["glass", "grapes"],
+  children: ["glassmakers", "vineyard"],
   staff: { residence: "artisans", amount: 150 },
   price: { construction: 25000, maintenance: 1000 },
 }
@@ -796,7 +796,7 @@ export const jewellers: Building = {
     { resource: "windows", amount: 15 },
     { resource: "reinforcedConcrete", amount: 15 },
   ],
-  ingredients: ["gold", "pearls"],
+  children: ["goldsmiths", "pearlFarm"],
   staff: { residence: "engineers", amount: 150 },
   price: { construction: 25000, maintenance: 8500 },
 }
@@ -812,7 +812,7 @@ export const oldMarquetryWorkshop: Building = {
     { resource: "windows", amount: 15 },
     { resource: "reinforcedConcrete", amount: 15 },
   ],
-  ingredients: ["wood"],
+  children: ["oldLumberjackHut"],
   staff: { residence: "engineers", amount: 150 },
   price: { construction: 10000, maintenance: 750 },
 }
@@ -828,7 +828,7 @@ export const gramophoneFactory: Building = {
     { resource: "windows", amount: 15 },
     { resource: "reinforcedConcrete", amount: 15 },
   ],
-  ingredients: ["woodVeneers", "brass"],
+  children: ["marquetryWorkshop", "brassSmeltery"],
   staff: { residence: "engineers", amount: 150 },
   price: { construction: 25000, maintenance: 6250 },
 }
@@ -844,7 +844,7 @@ export const coachmakers: Building = {
     { resource: "windows", amount: 15 },
     { resource: "reinforcedConcrete", amount: 15 },
   ],
-  ingredients: ["wood", "caoutchouc"],
+  children: ["lumberjackHut", "caoutchoucPlantation"],
   staff: { residence: "engineers", amount: 150 },
   price: { construction: 10000, maintenance: 1000 },
 }
@@ -860,7 +860,7 @@ export const cabAssemblyLine: Building = {
     { resource: "windows", amount: 30 },
     { resource: "reinforcedConcrete", amount: 30 },
   ],
-  ingredients: ["steamMotors", "chassis"],
+  children: ["motorAssemblyLine", "coachmakers"],
   staff: { residence: "engineers", amount: 500 },
   price: { construction: 25000, maintenance: 10000 },
 }
@@ -906,7 +906,7 @@ export const friedPlantainKitchen: Building = {
   product: "friedPlantains",
   processingTime: 30,
   costs: [{ resource: "timber", amount: 2 }],
-  ingredients: ["fishOil", "plantains"],
+  children: ["fishOilFactory", "plantainPlantation"],
   staff: { residence: "jornaleros", amount: 25 },
   price: { construction: 500, maintenance: 15 },
 }
@@ -934,7 +934,7 @@ export const cottonMill: Building = {
   product: "cottonFabric",
   processingTime: 30,
   costs: [{ resource: "timber", amount: 6 }],
-  ingredients: ["cotton"],
+  children: ["cottonPlantation"],
   staff: { residence: "jornaleros", amount: 10 },
   price: { construction: 500, maintenance: 10 },
 }
@@ -962,7 +962,7 @@ export const ponchoDarner: Building = {
   product: "ponchos",
   processingTime: 30,
   costs: [{ resource: "timber", amount: 6 }],
-  ingredients: ["alpacaWool"],
+  children: ["alpacaFarm"],
   staff: { residence: "jornaleros", amount: 30 },
   price: { construction: 500, maintenance: 15 },
 }
@@ -1011,7 +1011,7 @@ export const tortillaMaker: Building = {
     { resource: "timber", amount: 3 },
     { resource: "bricks", amount: 2 },
   ],
-  ingredients: ["beef", "corn"],
+  children: ["cattleFarm", "cornFarm"],
   staff: { residence: "obreros", amount: 100 },
   price: { construction: 2500, maintenance: 100 },
 }
@@ -1033,7 +1033,7 @@ export const coffeeRoaster: Building = {
     { resource: "timber", amount: 5 },
     { resource: "bricks", amount: 3 },
   ],
-  ingredients: ["coffeeBeans"],
+  children: ["coffeePlantation"],
   staff: { residence: "obreros", amount: 150 },
   price: { construction: 2500, maintenance: 150 },
 }
@@ -1046,7 +1046,7 @@ export const feltProducer: Building = {
     { resource: "timber", amount: 3 },
     { resource: "bricks", amount: 2 },
   ],
-  ingredients: ["alpacaWool"],
+  children: ["alpacaFarm"],
   staff: { residence: "jornaleros", amount: 10 },
   price: { construction: 2500, maintenance: 10 },
 }
@@ -1059,7 +1059,7 @@ export const bombinWeaver: Building = {
     { resource: "timber", amount: 3 },
     { resource: "bricks", amount: 2 },
   ],
-  ingredients: ["cottonFabric", "felt"],
+  children: ["cottonMill", "feltProducer"],
   staff: { residence: "obreros", amount: 20 },
   price: { construction: 2500, maintenance: 50 },
 }
@@ -1128,7 +1128,7 @@ export const cigarFactory: Building = {
     { resource: "timber", amount: 10 },
     { resource: "bricks", amount: 20 },
   ],
-  ingredients: ["tobacco", "woodVeneers"],
+  children: ["tobaccoPlantation", "marquetryWorkshop"],
   staff: { residence: "obreros", amount: 175 },
   price: { construction: 2500, maintenance: 250 },
 }
@@ -1159,7 +1159,7 @@ export const sugarRefinery: Building = {
   product: "sugar",
   processingTime: 30,
   costs: [{ resource: "timber", amount: 6 }],
-  ingredients: ["sugarCane"],
+  children: ["sugarCanePlantation"],
   staff: { residence: "obreros", amount: 50 },
   price: { construction: 500, maintenance: 10 },
 }
@@ -1169,7 +1169,7 @@ export const chocolateFactory: Building = {
   product: "chocolate",
   processingTime: 30,
   costs: [{ resource: "timber", amount: 6 }],
-  ingredients: ["sugar", "cocoa"],
+  children: ["sugarRefinery", "cocoaPlantation"],
   staff: { residence: "obreros", amount: 100 },
   price: { construction: 500, maintenance: 50 },
 }
