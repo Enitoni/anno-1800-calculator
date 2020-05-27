@@ -21,10 +21,10 @@ export class ChainStore implements InitializableStore {
 
   @computed
   public get tree() {
-    const traverse = (b: Building): TraversedBuilding => {
-      const children = (b.children ?? []).map((x) => traverse(buildings[x]))
+    const traverse = (building: Building): TraversedBuilding => {
+      const children = (building.children ?? []).map((x) => traverse(buildings[x]))
 
-      return { ...b, children }
+      return { building, children }
     }
 
     return traverse(this.selected)

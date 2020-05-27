@@ -1,5 +1,6 @@
 import { Building } from "../../game/types/Building"
 
-export type TraversedBuilding = Omit<Building, "children"> & {
+export type TraversedBuilding = {
+  building: Building
   children: TraversedBuilding[]
 }
