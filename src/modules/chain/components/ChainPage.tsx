@@ -6,6 +6,9 @@ import * as buildings from "../../game/buildings"
 import { BuildingItem } from "./BuildingItem"
 import { ChainCategoryList } from "./ChainCategoryList"
 import { Section } from "../../core/components/Section"
+import { useStores } from "../../../common/state/hooks/useStores"
+import { useObserver } from "mobx-react-lite"
+import { BuildingTreeGraph } from "./BuildingTreeGraph/BuildingTreeGraph"
 
 const Container = styled.div`
   display: flex;
@@ -16,8 +19,15 @@ const Sidebar = styled.div`
   flex-shrink: 0;
 `
 
+const Content = styled.div`
+  margin-left: 64px;
+  flex: 1;
+`
+
 export function ChainPage() {
-  return (
+  const { chainStore } = useStores()
+
+  return useObserver(() => (
     <>
       <PageTitle title="Production Chains" icon="link" />
       <Container>
@@ -26,7 +36,10 @@ export function ChainPage() {
             <ChainCategoryList />
           </Section>
         </Sidebar>
+        <Content>
+          <BuildingTreeGraph tree={chainStore.tree} />
+        </Content>
       </Container>
     </>
-  )
+  ))
 }
