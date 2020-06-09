@@ -32,8 +32,6 @@ const Children = styled.div`
 const Node = styled(TreeNode)`
   max-width: 80px;
   min-height: 125px;
-  position: relative;
-  z-index: 2;
 `
 
 const ChildConnector = styled(Connector)``

@@ -15,4 +15,7 @@ export type Theme = {
     lightNegative: string
     strongNegative: string
   }
+  graph: {
+    dot: string
+  }
 }

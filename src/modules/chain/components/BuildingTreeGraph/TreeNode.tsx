@@ -63,6 +63,9 @@ const Name = styled.span`
   padding: 8px;
   background: ${getTransparency("strongNegative")};
   border-radius: 4px;
+
+  position: relative;
+  z-index: 2;
 `
 
 export function TreeNode(props: TreeNodeProps) {

@@ -1,6 +1,7 @@
 import styled from "../../../theming/custom"
 import React from "react"
 import { useTheme } from "../../../theming/hooks/useTheme"
+import { opacify } from "polished"
 
 export type ConnectorProps = {
   className?: string
@@ -46,6 +47,8 @@ export function Connector(props: ConnectorProps) {
         fill="transparent"
         d={`M ${startX} ${startY} C ${startX} ${startY}, ${stopX} ${stopY}, ${stopX} ${stopY}`}
       />
+      <circle fill={theme.graph.dot} cx={startX} cy={startY} r={3} />
+      <circle fill={theme.graph.dot} cx={stopX} cy={stopY} r={3} />
     </Container>
   )
 }

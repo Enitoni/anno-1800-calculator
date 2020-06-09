@@ -17,4 +17,7 @@ export const darkTheme: Theme = {
     lightNegative: "rgba(0, 0, 0, 0.3)",
     strongNegative: "rgba(0, 0, 0, 0.6)",
   },
+  graph: {
+    dot: "#9f9f9f",
+  },
 }
