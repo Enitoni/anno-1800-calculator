@@ -10,6 +10,7 @@ import { slugify } from "../../../../common/lang/string/slugify"
 import * as resources from "../../../game/resources"
 
 export type TreeNodeProps = {
+  onGetElement?: (element: HTMLElement | null) => void
   className?: string
   building: Building
   count: number
@@ -31,7 +32,6 @@ const Inner = styled.div`
 const Image = styled.img`
   ${size(48)};
   display: block;
-  border-radius: 100%;
 `
 
 const Counter = styled.div`
@@ -58,15 +58,20 @@ const Name = styled.span`
   font-weight: 700;
   font-size: 0.8em;
   text-align: center;
+  white-space: nowrap;
+
+  padding: 8px;
+  background: ${getTransparency("strongNegative")};
+  border-radius: 4px;
 `
 
 export function TreeNode(props: TreeNodeProps) {
-  const { building, count, className } = props
+  const { building, count, className, onGetElement = () => {} } = props
   const product = resources[building.product]
 
   return (
     <Container className={className}>
-      <Inner>
+      <Inner ref={onGetElement}>
         <Image
           src={join(
             __webpack_public_path__,
