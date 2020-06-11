@@ -52,7 +52,7 @@ export const categories: ChainCategory[] = ([
   {
     residence: "jornaleros",
     buildings: [
-      "lumberjackHut",
+      "sawmill",
       "friedPlantainKitchen",
       "sailmakers",
       "rumDistillery",

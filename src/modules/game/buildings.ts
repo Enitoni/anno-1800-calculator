@@ -879,6 +879,7 @@ export const sawmill: Building = {
   product: "timber",
   processingTime: 15,
   costs: [],
+  children: ["lumberjackHut"],
   staff: { residence: "jornaleros", amount: 20 },
   price: { construction: 500, maintenance: 10 },
 }
@@ -944,6 +945,7 @@ export const sailmakers: Building = {
   product: "sails",
   processingTime: 30,
   costs: [{ resource: "timber", amount: 8 }],
+  children: ["cottonMill"],
   staff: { residence: "jornaleros", amount: 20 },
   price: { construction: 500, maintenance: 15 },
 }
@@ -990,6 +992,7 @@ export const brickFactory: Building = {
   product: "bricks",
   processingTime: 60,
   costs: [{ resource: "timber", amount: 8 }],
+  children: ["clayPit"],
   staff: { residence: "obreros", amount: 50 },
   price: { construction: 2500, maintenance: 20 },
 }
@@ -1141,6 +1144,7 @@ export const marquetryWorkshop: Building = {
     { resource: "timber", amount: 10 },
     { resource: "bricks", amount: 20 },
   ],
+  children: ["lumberjackHut"],
   staff: { residence: "obreros", amount: 100 },
   price: { construction: 2500, maintenance: 100 },
 }
