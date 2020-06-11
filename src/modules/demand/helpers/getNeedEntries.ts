@@ -7,6 +7,7 @@ import * as residences from "../../game/residences"
 import * as resources from "../../game/resources"
 import * as buildings from "../../game/buildings"
 import { Building } from "../../game/types/Building"
+import { PopulationEntry } from "../types/PopulationEntry"
 
 export type ResidenceNeedEntry = {
   population: number
@@ -22,9 +23,7 @@ const buildingsByProduct = Object.fromEntries(
   Object.values(buildings).map((b) => [b.product, b] as const),
 ) as Record<ResourceName, Building>
 
-export const getNeedEntries = (
-  population: Record<ResidenceName, number>,
-): ResidenceNeedEntry[] => {
+export const getNeedEntries = (population: PopulationEntry[]): ResidenceNeedEntry[] => {
   const mapResource = (name: ResourceName): AssociatedResource => {
     const resource = resources[name]
     const building = buildingsByProduct[name]
@@ -46,9 +45,9 @@ export const getNeedEntries = (
     }
   }
 
-  return Object.entries(population)
-    .filter(([_, p]) => p > 0)
-    .map(([name, population]) => ({ ...residences[name as ResidenceName], population }))
+  return population
+    .filter((p) => p.count > 0)
+    .map((p) => ({ ...residences[p.name], population: p.count }))
     .map((residence) => ({
       ...residence,
       needs: residence.needs.map(mapNeed),

@@ -9,9 +9,10 @@ import { getColor } from "../../theming/helpers"
 import { size } from "polished"
 import { slugify } from "../../../common/lang/string/slugify"
 import { join } from "path"
+import { PopulationEntry } from "../types/PopulationEntry"
 
 export type PopulationProps = {
-  population: Record<ResidenceName, number>
+  population: PopulationEntry[]
   editable?: boolean
 }
 
@@ -56,25 +57,23 @@ const Avatar = styled.img`
 export function Population(props: PopulationProps) {
   const { population, editable } = props
 
-  const renderAmount = (name: ResidenceName) => {
-    const amount = population[name]
-
+  const renderAmount = (entry: PopulationEntry) => {
     if (!editable) {
-      return <Amount>{amount}</Amount>
+      return <Amount>{entry.count}</Amount>
     }
 
     return (
       <NumberInput
         controls={false}
-        value={population[name]}
+        value={entry.count}
         min={0}
-        onInput={(n) => (population[name] = n)}
+        onInput={(n) => (entry.count = n)}
       />
     )
   }
 
-  const renderController = (name: ResidenceName) => {
-    const residence = residences[name]
+  const renderController = (entry: PopulationEntry) => {
+    const residence = residences[entry.name]
 
     return (
       <Controller key={residence.name}>
@@ -87,14 +86,12 @@ export function Population(props: PopulationProps) {
           />
           <ControllerLabel>{residence.name}</ControllerLabel>
         </ControllerHeader>
-        {renderAmount(name)}
+        {renderAmount(entry)}
       </Controller>
     )
   }
 
   return useObserver(() => (
-    <Container>
-      {Object.keys(population).map((x) => renderController(x as ResidenceName))}
-    </Container>
+    <Container>{population.map((x) => renderController(x))}</Container>
   ))
 }

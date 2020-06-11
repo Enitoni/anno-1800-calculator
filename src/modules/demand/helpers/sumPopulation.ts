@@ -1,14 +1,17 @@
 import { ResidenceName } from "../../game/types/ResidenceName"
+import { PopulationEntry } from "../types/PopulationEntry"
 
-export const sumPopulation = (populations: Record<ResidenceName, number>[]) => {
-  const [first, ...rest] = populations
-  const result = { ...first }
+export const sumPopulation = (populations: PopulationEntry[][]): PopulationEntry[] => {
+  const result: Partial<Record<ResidenceName, number>> = {}
 
-  for (const population of rest) {
-    for (const [name, amount] of Object.entries(population)) {
-      result[name as ResidenceName] += amount
+  for (const population of populations) {
+    for (const entry of population) {
+      result[entry.name] = entry.count
     }
   }
 
-  return result
+  return Object.entries(result).map(([name, count]) => ({
+    name: name as ResidenceName,
+    count: count!,
+  }))
 }

@@ -2,17 +2,13 @@ import { InitializableStore } from "../../../common/state/types/InitializableSto
 import { observable, autorun, computed } from "mobx"
 import { Island } from "../classes/Island"
 import { StoredValue } from "../../../common/dom/classes/StoredValue"
-import {
-  IslandCollection,
-  SerializedIslandCollection,
-  defaultIslandCollection,
-} from "../classes/IslandCollection"
+import { IslandCollection, SerializedIslandCollection } from "../classes/IslandCollection"
 import { sumPopulation } from "../helpers/sumPopulation"
 import { getNeedEntries } from "../helpers/getNeedEntries"
 import { calculateDemands } from "../helpers/calculateDemands"
 
 const storedCollections = new StoredValue<SerializedIslandCollection[]>("collections", [
-  defaultIslandCollection,
+  IslandCollection.createDataByRegion("oldWorld"),
 ])
 
 export class IslandStore implements InitializableStore {
@@ -66,7 +62,7 @@ export class IslandStore implements InitializableStore {
 
   @computed
   public get population() {
-    return sumPopulation(this.collections.flatMap((c) => c.population))
+    return sumPopulation(this.collections.map((c) => c.population))
   }
 
   @computed

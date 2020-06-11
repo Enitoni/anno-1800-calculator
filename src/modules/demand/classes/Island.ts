@@ -1,32 +1,35 @@
 import { observable, computed } from "mobx"
-import { ResidenceName } from "../../game/types/ResidenceName"
 import { calculateDemands } from "../helpers/calculateDemands"
 import { getNeedEntries } from "../helpers/getNeedEntries"
+import { RegionName } from "../../game/types/RegionName"
+import { PopulationEntry } from "../types/PopulationEntry"
+
+import * as regions from "../../game/regions"
 
 export type SerializedIsland = {
   name: string
-  population: Record<ResidenceName, number>
-}
-
-export const defaultIsland: SerializedIsland = {
-  name: "",
-  population: {
-    farmers: 0,
-    workers: 0,
-    artisans: 0,
-    engineers: 0,
-    investors: 0,
-    jornaleros: 0,
-    obreros: 0,
-  },
+  region: RegionName
+  population: PopulationEntry[]
 }
 
 export class Island {
   @observable public name: string
-  @observable public population: Record<ResidenceName, number>
+  @observable public region: RegionName
+  @observable public population: PopulationEntry[]
 
-  constructor(data = defaultIsland) {
+  public static createDataByRegion(name: RegionName) {
+    const region = regions[name]
+
+    return {
+      name: "",
+      region: name,
+      population: region.residences.map((x) => ({ name: x, count: 0 })),
+    }
+  }
+
+  constructor(data = Island.createDataByRegion("oldWorld")) {
     this.name = data.name
+    this.region = data.region
     this.population = data.population
   }
 
@@ -43,12 +46,13 @@ export class Island {
 
   @computed
   public get totalPopulation() {
-    return Object.values(this.population).reduce((acc, c) => acc + c)
+    return Object.values(this.population).reduce((acc, c) => acc + c.count, 0)
   }
 
   public get serialized(): SerializedIsland {
     return {
       name: this.name,
+      region: this.region,
       population: this.population,
     }
   }
