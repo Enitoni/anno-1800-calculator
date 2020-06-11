@@ -361,7 +361,7 @@ export const artisanalKitchen: Building = {
     { resource: "steelBeams", amount: 8 },
     { resource: "windows", amount: 8 },
   ],
-  children: ["cattleFarm", "redPepperFarm"],
+  children: ["oldCattleFarm", "redPepperFarm"],
   staff: { residence: "artisans", amount: 75 },
   price: { construction: 2000, maintenance: 100 },
 }
