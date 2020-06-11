@@ -37,7 +37,7 @@ export function ChainPage() {
           </Section>
         </Sidebar>
         <Content>
-          <BuildingTreeGraph tree={chainStore.tree} />
+          <BuildingTreeGraph tree={chainStore.chain.tree} />
         </Content>
       </Container>
     </>

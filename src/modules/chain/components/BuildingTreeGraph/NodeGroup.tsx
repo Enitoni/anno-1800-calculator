@@ -38,7 +38,7 @@ const ChildConnector = styled(Connector)``
 
 export function NodeGroup(props: NodeGroupProps) {
   const { tree, onGetRootElement } = props
-  const { children, building } = tree
+  const { children, building, count } = tree
 
   const [childrenConnections, setChildrenConnections] = useState<HTMLElement[]>([])
 
@@ -74,7 +74,7 @@ export function NodeGroup(props: NodeGroupProps) {
 
   return (
     <Container>
-      <Node onGetElement={handleGetElement} count={4} building={building} />
+      <Node onGetElement={handleGetElement} count={count} building={building} />
       {children.length > 0 && (
         <Children>
           {children.map((c, i) => (
