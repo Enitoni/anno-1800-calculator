@@ -10,8 +10,8 @@ const Root = styled.aside`
   border-radius: 3px;
 `
 
-export function Container(props: PropsWithChildren<{}>) {
-  const { children } = props
+export function Container(props: PropsWithChildren<{ className?: string }>) {
+  const { children, className } = props
 
-  return <Root>{children}</Root>
+  return <Root className={className}>{children}</Root>
 }
