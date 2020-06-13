@@ -8,6 +8,9 @@ import { Population } from "./Population"
 import styled from "../../theming/custom"
 import { Section } from "../../core/components/Section"
 import { DemandTable } from "./DemandTable"
+import { PrimaryButton } from "../../../common/button/components/PrimaryButton"
+import { useManager } from "../../../common/state/hooks/useManager"
+import { changeIslandRegion } from "../actions/changeIslandRegion"
 
 export type IslandViewProps = {
   island: Island
@@ -31,8 +34,13 @@ const ResultSection = styled(Section)`
   margin-top: 32px;
 `
 
+const EditButton = styled(PrimaryButton)`
+  margin-left: 16px;
+`
+
 export function IslandView(props: IslandViewProps) {
   const { island } = props
+  const manager = useManager()
 
   return useObserver(() => (
     <Container>
@@ -40,6 +48,10 @@ export function IslandView(props: IslandViewProps) {
         <FormField label="Name">
           <TextInput {...bindTextToObservable(island, "name")} />
         </FormField>
+        <EditButton
+          label="Change region"
+          onClick={() => changeIslandRegion(manager, island)}
+        />
       </Info>
       <PopulationSection label="Population">
         <Population editable population={island.population} />

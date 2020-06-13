@@ -27,6 +27,13 @@ export class Island {
     }
   }
 
+  public changeRegion(newRegion: RegionName) {
+    const region = regions[newRegion]
+
+    this.region = newRegion
+    this.population = region.residences.map((x) => ({ name: x, count: 0 }))
+  }
+
   constructor(data = Island.createDataByRegion("oldWorld")) {
     this.name = data.name
     this.region = data.region
