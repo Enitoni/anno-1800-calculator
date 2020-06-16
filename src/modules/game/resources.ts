@@ -404,3 +404,23 @@ export const oil: Resource = {
   name: "Oil",
   type: "raw",
 }
+
+export const pemmican: Resource = {
+  name: "Pemmican",
+  type: "basic",
+}
+
+export const oilLamps: Resource = {
+  name: "Oil Lamps",
+  type: "basic",
+}
+
+export const parkas: Resource = {
+  name: "Parkas",
+  type: "basic",
+}
+
+export const huskySleds: Resource = {
+  name: "Husky Sleds",
+  type: "basic",
+}

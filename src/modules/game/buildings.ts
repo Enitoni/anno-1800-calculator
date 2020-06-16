@@ -1177,3 +1177,39 @@ export const chocolateFactory: Building = {
   staff: { residence: "obreros", amount: 100 },
   price: { construction: 500, maintenance: 50 },
 }
+
+export const pemmicanCookhouse: Building = {
+  name: "Pemmican Cookhouse",
+  product: "pemmican",
+  processingTime: 60,
+  costs: [],
+  staff: { residence: "explorers", amount: 100 },
+  price: { construction: 1000, maintenance: 60 },
+}
+
+export const oilLampFactory: Building = {
+  name: "Oil Lamp Factory",
+  product: "oilLamps",
+  processingTime: 60,
+  costs: [],
+  staff: { residence: "explorers", amount: 250 },
+  price: { construction: 2000, maintenance: 200 },
+}
+
+export const huskySledFactory: Building = {
+  name: "Husky Sled Factory",
+  product: "huskySleds",
+  processingTime: 60,
+  costs: [],
+  staff: { residence: "technicians", amount: 750 },
+  price: { construction: 5000, maintenance: 650 },
+}
+
+export const parkaFactory: Building = {
+  name: "Parka Factory",
+  product: "parkas",
+  processingTime: 90,
+  costs: [],
+  staff: { residence: "technicians", amount: 300 },
+  price: { construction: 2000, maintenance: 350 },
+}

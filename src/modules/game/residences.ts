@@ -244,10 +244,44 @@ export const obreros: Residence = {
 
 export const explorers: Residence = {
   name: "Explorers",
-  needs: [],
+  needs: [
+    {
+      resource: "pemmican",
+      amount: 0.0012000000000000001,
+    },
+    {
+      resource: "oilLamps",
+      amount: 0.0006000000000000001,
+    },
+  ],
 }
 
 export const technicians: Residence = {
   name: "Technicians",
-  needs: [],
+  needs: [
+    {
+      resource: "pemmican",
+      amount: 0.0012000000000000001,
+    },
+    {
+      resource: "oilLamps",
+      amount: 0.0006000000000000001,
+    },
+    {
+      resource: "cannedFood",
+      amount: 0.0006000000000000001,
+    },
+    {
+      resource: "huskySleds",
+      amount: 0.0009,
+    },
+    {
+      resource: "parkas",
+      amount: 0.0012000000000000001,
+    },
+    {
+      resource: "coffee",
+      amount: 0.0012000000000000001,
+    },
+  ],
 }

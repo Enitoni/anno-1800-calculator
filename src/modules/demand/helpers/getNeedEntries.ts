@@ -28,10 +28,6 @@ export const getNeedEntries = (population: PopulationEntry[]): ResidenceNeedEntr
     const resource = resources[name]
     const building = buildingsByProduct[name]
 
-    if (!building) {
-      console.log({ building, resource })
-    }
-
     return {
       ...resource,
       building,
