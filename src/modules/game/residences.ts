@@ -241,3 +241,13 @@ export const obreros: Residence = {
     },
   ],
 }
+
+export const explorers: Residence = {
+  name: "Explorers",
+  needs: [],
+}
+
+export const technicians: Residence = {
+  name: "Technicians",
+  needs: [],
+}

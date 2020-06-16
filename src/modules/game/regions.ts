@@ -12,5 +12,5 @@ export const newWorld: Region = {
 
 export const arctic: Region = {
   name: "Arctic",
-  residences: [],
+  residences: ["explorers", "technicians"],
 }
