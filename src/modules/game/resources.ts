@@ -424,3 +424,38 @@ export const huskySleds: Resource = {
   name: "Husky Sleds",
   type: "basic",
 }
+
+export const whaleOil: Resource = {
+  name: "Whale Oil",
+  type: "basic",
+}
+
+export const caribou: Resource = {
+  name: "Caribou",
+  type: "basic",
+}
+
+export const sleepingBags: Resource = {
+  name: "Sleeping Bags",
+  type: "basic",
+}
+
+export const sealSkin: Resource = {
+  name: "Seal Skin",
+  type: "raw",
+}
+
+export const gooseFeathers: Resource = {
+  name: "Goose Feathers",
+  type: "raw",
+}
+
+export const sledFrames: Resource = {
+  name: "Sled Frames",
+  type: "basic",
+}
+
+export const huskies: Resource = {
+  name: "Huskies",
+  type: "basic",
+}

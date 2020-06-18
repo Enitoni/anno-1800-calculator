@@ -1183,6 +1183,7 @@ export const pemmicanCookhouse: Building = {
   product: "pemmican",
   processingTime: 60,
   costs: [],
+  children: ["whalingStation", "caribouHuntingCabin"],
   staff: { residence: "explorers", amount: 100 },
   price: { construction: 1000, maintenance: 60 },
 }
@@ -1201,6 +1202,7 @@ export const huskySledFactory: Building = {
   product: "huskySleds",
   processingTime: 60,
   costs: [],
+  children: ["sledFrameFactory", "huskyFarm"],
   staff: { residence: "technicians", amount: 750 },
   price: { construction: 5000, maintenance: 650 },
 }
@@ -1210,6 +1212,72 @@ export const parkaFactory: Building = {
   product: "parkas",
   processingTime: 90,
   costs: [],
+  children: ["sealHuntingDocks", "gooseFarm"],
   staff: { residence: "technicians", amount: 300 },
   price: { construction: 2000, maintenance: 350 },
+}
+
+export const whalingStation: Building = {
+  name: "Whaling Station",
+  product: "whaleOil",
+  processingTime: 60,
+  costs: [],
+  staff: { residence: "explorers", amount: 100 },
+  price: { construction: 200, maintenance: 40 },
+}
+
+export const caribouHuntingCabin: Building = {
+  name: "Caribou Hunting Cabin",
+  product: "caribou",
+  processingTime: 60,
+  costs: [],
+  staff: { residence: "explorers", amount: 100 },
+  price: { construction: 200, maintenance: 40 },
+}
+
+export const sleepingBagFactory: Building = {
+  name: "Sleeping Bag Factory",
+  product: "sleepingBags",
+  processingTime: 60,
+  costs: [],
+  children: ["sealHuntingDocks", "gooseFarm"],
+  staff: { residence: "explorers", amount: 250 },
+  price: { construction: 1500, maintenance: 120 },
+}
+
+export const sealHuntingDocks: Building = {
+  name: "Seal Hunting Docks",
+  product: "sealSkin",
+  processingTime: 30,
+  costs: [],
+  staff: { residence: "explorers", amount: 250 },
+  price: { construction: 200, maintenance: 60 },
+}
+
+export const gooseFarm: Building = {
+  name: "Goose Farm",
+  product: "gooseFeathers",
+  processingTime: 120,
+  costs: [],
+  staff: { residence: "explorers", amount: 250 },
+  price: { construction: 200, maintenance: 70 },
+}
+
+export const sledFrameFactory: Building = {
+  name: "Sled Frame Factory",
+  product: "sledFrames",
+  processingTime: 60,
+  costs: [],
+  children: ["lumberjackHut", "sealHuntingDocks"],
+  staff: { residence: "technicians", amount: 750 },
+  price: { construction: 3000, maintenance: 450 },
+}
+
+export const huskyFarm: Building = {
+  name: "Husky Farm",
+  product: "huskies",
+  processingTime: 120,
+  costs: [],
+  staff: { residence: "technicians", amount: 750 },
+  price: { construction: 3000, maintenance: 150 },
 }

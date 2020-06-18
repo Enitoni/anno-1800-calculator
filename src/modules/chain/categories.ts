@@ -72,11 +72,11 @@ export const categories: ChainCategory[] = ([
   },
   {
     residence: "explorers",
-    buildings: [],
+    buildings: ["pemmicanCookhouse", "sleepingBagFactory"],
   },
   {
     residence: "technicians",
-    buildings: [],
+    buildings: ["parkaFactory", "huskySledFactory"],
   },
 ] as BuildingCategoryReference[]).map((reference) => ({
   residence: residences[reference.residence],
