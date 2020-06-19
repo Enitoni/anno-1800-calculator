@@ -12,7 +12,6 @@ const Container = styled.input`
 
   &::placeholder {
     font-weight: 600;
-    font-style: italic;
 
     color: ${getFontColor("muted")};
   }

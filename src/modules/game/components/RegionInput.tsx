@@ -29,7 +29,7 @@ const Input = styled.div<{ active: boolean }>`
 
   border-radius: 4px;
 
-  margin-top: 16px;
+  margin-top: 8px;
   border: solid 2px transparent;
 
   transition: 200ms ease border-color;

@@ -19,6 +19,7 @@ import { Tab } from "../../../common/routing/context/tabContext"
 import { TabRow } from "../../../common/routing/components/TabRow"
 import { TotalView } from "./TotalView"
 import { CollectionView } from "./CollectionView"
+import { addCollection } from "../actions/addCollection"
 
 const Container = styled.div`
   display: flex;
@@ -106,7 +107,7 @@ export function DemandPage() {
               </CalculationList>
               <PrimaryButton
                 stretch
-                onClick={() => islandStore.add()}
+                onClick={() => addCollection(manager)}
                 label="New collection"
                 icon="circledPlus"
               />

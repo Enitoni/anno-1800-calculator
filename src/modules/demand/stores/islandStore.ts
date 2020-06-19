@@ -33,8 +33,8 @@ export class IslandStore implements InitializableStore {
     this.selected = this.islands[0]
   }
 
-  public add() {
-    const collection = new IslandCollection()
+  public add(data?: SerializedIslandCollection) {
+    const collection = new IslandCollection(data)
     const island = collection.islands[0]
 
     this.collections.push(collection)

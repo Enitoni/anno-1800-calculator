@@ -5,6 +5,8 @@ import { getNeedEntries } from "../helpers/getNeedEntries"
 import { calculateDemands } from "../helpers/calculateDemands"
 import { RegionName } from "../../game/types/RegionName"
 
+import * as regions from "../../game/regions"
+
 export type SerializedIslandCollection = {
   name: string
   defaultRegion: RegionName
@@ -19,7 +21,7 @@ export class IslandCollection {
 
   public static createDataByRegion(name: RegionName) {
     return {
-      name: "",
+      name: regions[name].name,
       defaultRegion: name,
       islands: [Island.createDataByRegion(name)],
     }
