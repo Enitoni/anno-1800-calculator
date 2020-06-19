@@ -6,7 +6,8 @@ export const sumPopulation = (populations: PopulationEntry[][]): PopulationEntry
 
   for (const population of populations) {
     for (const entry of population) {
-      result[entry.name] = entry.count
+      const newValue = result[entry.name] || 0
+      result[entry.name] = newValue + entry.count
     }
   }
 
