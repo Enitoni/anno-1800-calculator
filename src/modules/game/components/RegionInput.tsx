@@ -24,7 +24,7 @@ const Input = styled.div<{ active: boolean }>`
   display: inline-flex;
   align-items: center;
 
-  background: ${getTransparency("lightNegative")};
+  background: ${getColor("primary")};
   padding: 0px 12px;
 
   border-radius: 4px;

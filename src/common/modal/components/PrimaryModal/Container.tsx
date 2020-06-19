@@ -1,13 +1,14 @@
 import React from "react"
 import styled from "../../../../modules/theming/custom"
 
-import { getColor } from "../../../../modules/theming/helpers"
+import { getColor, getTransparency } from "../../../../modules/theming/helpers"
 import { PropsWithChildren } from "react"
 
 const Root = styled.aside`
   min-width: 458px;
-  background: ${getColor("primary")};
+  background: ${getColor("background")};
   border-radius: 3px;
+  border: solid 1px ${getTransparency("lightPositive")};
 `
 
 export function Container(props: PropsWithChildren<{ className?: string }>) {

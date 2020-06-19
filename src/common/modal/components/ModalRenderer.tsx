@@ -26,7 +26,7 @@ const ContainerAnimation = keyframes`
 
 const Container = styled.div<{ status: TransitionStatus }>`
   position: fixed;
-  z-index: 5;
+  z-index: 15;
 
   top: 0px;
   bottom: 0px;
