@@ -17,6 +17,10 @@ class RoutingStore implements InitializableStore {
     this.history.listen((location) => {
       this.location = location
     })
+
+    if (this.location.hash === "") {
+      this.push("/")
+    }
   }
 
   public push = (path: string) => {

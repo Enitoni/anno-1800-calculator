@@ -21,8 +21,6 @@ export const useRouter = (routes: Route[]) => {
         segmentValueCharset: "a-zA-Z0-9-_~%.",
       }).match(hash)
 
-      console.log(hash)
-
       if (match) {
         return [route.name, () => route.render(match)] as const
       }
